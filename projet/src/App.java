@@ -9,6 +9,7 @@ public class App {
         game.initGrid();
         Snake snek = new Snake(10,10);
         game.addSnake(snek);
+        SnakeController controls = new SnakeController(snek, game);
         // game.updateSnakePos(snek);
         // game.displayGrid();
         // game.moveSnake(snek, Direction.UP);
@@ -23,10 +24,10 @@ public class App {
         test.add(l);
         test.setVisible(true);
 
-        test.addKeyListener(game);
+        test.addKeyListener(controls);
 
         while (true) {
-            game.moveSnake();
+            controls.moveSnake();
             game.updateSnakePos();
             game.displayGrid();
             // game.moveSnake(snek, Direction.RIGHT);
