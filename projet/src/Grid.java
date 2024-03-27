@@ -1,9 +1,11 @@
+import java.util.List;
+
 public class Grid {
     private Integer height;
     private Integer width;
     private Integer maxSnakeSize;
     private Snake snake;
-    private Integer [][] grid;
+    private Integer[][] grid;
 
     public Grid(Integer height, Integer width) {
         this.height = height;
@@ -23,7 +25,7 @@ public class Grid {
     public void displayGrid() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                System.out.print(grid[i][j]+" ");
+                System.out.print(grid[i][j] + " ");
             }
             System.out.println("");
         }
@@ -39,5 +41,11 @@ public class Grid {
         Integer snakeY = this.snake.getY();
 
         this.grid[snakeY][snakeX] = 1;
+    }
+
+    public void generateItem(List<Item> itemList) {
+        for (int i = 0; i < itemList.size(); i++) {
+            this.grid[itemList.get(i).x][itemList.get(i).y] = 5;
+        }
     }
 }

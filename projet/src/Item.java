@@ -1,9 +1,17 @@
 public class Item {
     protected Integer x;
     protected Integer y;
+
+    public Item(Integer x, Integer y) {
+        this.x = x;
+        this.y = y;
+    }
 }
 
+/* Construction des items */
+
 interface ConstructorItem {
+
     public Item constructFruit();
 
     public Item constructCandy();
@@ -11,10 +19,11 @@ interface ConstructorItem {
     public Item constructWall();
 }
 
-abstract class AbstractConstructor implements ConstructorItem {
-    Item myFactory;
-
-    public AbstractConstructor() {
-
-    }
-}
+/*
+ * interface ItemFactory{
+ * 
+ * 
+ * 
+ * 
+ * }
+ */
