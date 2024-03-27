@@ -8,6 +8,14 @@ public class Snake {
     private Direction direction;
     private List<Entry<Integer,Integer>> last_positions;
 
+    public Snake(Integer x, Integer y) {
+        this.size = 0;
+        this.direction = Direction.RIGHT;
+        this.last_positions = new ArrayList<>();
+        Entry<Integer,Integer> startPos = new AbstractMap.SimpleEntry<>(x,y);
+        last_positions.add(startPos);
+    }
+
     public Direction getDirection() {
         return direction;
     }
@@ -16,14 +24,6 @@ public class Snake {
         this.direction = direction;
     }
 
-    // private List<List<Integer>> last_positions;
-
-    public Snake(Integer x, Integer y) {
-        this.size = 1;
-        this.last_positions = new ArrayList<>();
-        Entry<Integer,Integer> startPos = new AbstractMap.SimpleEntry<>(x,y);
-        last_positions.add(startPos);
-    }
 
     public Entry<Integer,Integer> getPos() {
         return last_positions.getLast();
