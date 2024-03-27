@@ -8,6 +8,7 @@ public class App {
         Grid game = new Grid(20,20);
         game.initGrid();
         Snake snek = new Snake(10,10);
+        game.addSnake(snek);
         // game.updateSnakePos(snek);
         // game.displayGrid();
         // game.moveSnake(snek, Direction.UP);
@@ -25,9 +26,9 @@ public class App {
         test.addKeyListener(game);
 
         while (true) {
-            test.addKeyListener(game);
-            // game.updateSnakePos(snek);
-            // game.displayGrid();
+            game.moveSnake();
+            game.updateSnakePos();
+            game.displayGrid();
             // game.moveSnake(snek, Direction.RIGHT);
             TimeUnit.MILLISECONDS.sleep(500);
         }

@@ -8,6 +8,7 @@ public class Grid implements KeyListener {
     private Integer height;
     private Integer width;
     private Integer maxSnakeSize;
+    private Snake snake;
     private Integer [][] grid;
 
     public Grid(Integer height, Integer width) {
@@ -35,9 +36,13 @@ public class Grid implements KeyListener {
         System.out.println("");
     }
 
-    public void updateSnakePos(Snake snake) {
-        Integer snakeX = snake.getX();
-        Integer snakeY = snake.getY();
+    public void addSnake(Snake snake) {
+        this.snake = snake;
+    }
+
+    public void updateSnakePos() {
+        Integer snakeX = this.snake.getX();
+        Integer snakeY = this.snake.getY();
 
         this.grid[snakeY][snakeX] = 1;
     }
@@ -54,20 +59,20 @@ public class Grid implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 System.out.println("VK_UP");
+                this.snake.setDirection(Direction.UP);
                 break;
             case KeyEvent.VK_DOWN:
                 System.out.println("VK_DOWN");
+                this.snake.setDirection(Direction.DOWN);
                 break;
             case KeyEvent.VK_RIGHT:
                 System.out.println("VK_RIGHT");
+                this.snake.setDirection(Direction.RIGHT);
                 break;
             case KeyEvent.VK_LEFT:
                 System.out.println("VK_LEFT");
+                this.snake.setDirection(Direction.LEFT);
                 break;
-        }
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            
-            // System.out.println("VK_UP");
         }
     }
     
@@ -78,15 +83,16 @@ public class Grid implements KeyListener {
     }
 
 
-    public void moveSnake(Snake snake, Direction direction) {
-        Integer last_x = snake.getX();
-        Integer last_y = snake.getY();
+    public void moveSnake() {
+        Integer last_x = this.snake.getX();
+        Integer last_y = this.snake.getY();
+        Direction direction = this.snake.getDirection();
         switch (direction) {
             case UP: 
-                last_y++;
+                last_y--;
                 break;
             case DOWN: 
-                last_y--;
+                last_y++;
                 break;
             case RIGHT: 
                 last_x++;
@@ -96,6 +102,6 @@ public class Grid implements KeyListener {
                 break;
         }
         Entry<Integer,Integer> new_pos = new AbstractMap.SimpleEntry<>(last_x,last_y);
-        snake.move(new_pos);
+        this.snake.move(new_pos);
     }
 }
