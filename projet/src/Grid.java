@@ -49,12 +49,27 @@ public class Grid {
         
         //A REGLER
         // Faire en sorte que les n dernières positions du serpent soient des 1, et les autres des 0
-        for (int i = last_positions.size(); i < 0; i--) {
-            if (i <=- this.snake.getSize()) {
-                this.grid[last_positions.get(i).getValue()][last_positions.get(i).getKey()] = 0;
+        if (last_positions.size() >= this.snake.getSize()) {
+            List<Entry<Integer,Integer>> positions = last_positions.reversed().subList(0, this.snake.getSize());
+            System.out.println(positions);
+            for (Entry<Integer,Integer> i : last_positions) {
+                if (positions.contains(i)) {
+                    this.grid[i.getValue()][i.getKey()] = 1;
+                }
+                else {
+                    this.grid[i.getValue()][i.getKey()] = 0;
+                }
             }
         }
-        
-        this.grid[snakeY][snakeX] = 1;
+        else {
+            this.grid[snakeY][snakeX] = 1;
+        }
+
+        for (int i = last_positions.size(); i > 0; i--) {
+
+            // if (i <= this.snake.getSize()) {
+            //     this.grid[last_positions.get(i).getValue()][last_positions.get(i).getKey()] = 0;
+            // }
+        }
     }
 }
