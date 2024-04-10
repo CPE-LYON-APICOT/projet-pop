@@ -20,19 +20,15 @@ public class SnakeController implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
-                // System.out.println("VK_UP");
                 this.snake.setValidDirection(Direction.UP);
                 break;
             case KeyEvent.VK_DOWN:
-                // System.out.println("VK_DOWN");
                 this.snake.setValidDirection(Direction.DOWN);
                 break;
             case KeyEvent.VK_RIGHT:
-                // System.out.println("VK_RIGHT");
                 this.snake.setValidDirection(Direction.RIGHT);
                 break;
             case KeyEvent.VK_LEFT:
-                // System.out.println("VK_LEFT");
                 this.snake.setValidDirection(Direction.LEFT);
                 break;
         }
@@ -46,6 +42,7 @@ public class SnakeController implements KeyListener {
         Integer last_x = this.snake.getX();
         Integer last_y = this.snake.getY();
         Direction direction = this.snake.getDirection();
+
         switch (direction) {
             case UP: 
                 last_y--;

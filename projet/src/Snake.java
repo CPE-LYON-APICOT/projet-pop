@@ -74,7 +74,6 @@ public class Snake {
         }
     }
 
-
     public Entry<Integer,Integer> getPos() {
         return last_positions.getLast();
     }

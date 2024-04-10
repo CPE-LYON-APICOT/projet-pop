@@ -1,10 +1,6 @@
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Frame;
-import java.awt.Label;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 
 public class App {
@@ -31,14 +27,6 @@ public class App {
 
         game.generateItem(listItems);
 
-        // Frame test = new Frame("test");
-        // test.setLayout(new FlowLayout());
-        // test.setSize(500, 500);
-        // Label l = new Label();
-        // l.setText("This is a demonstration");
-        // test.add(l);
-        // test.setVisible(true);
-
         JFrame f = new JFrame("label");
         JLabel l = new JLabel();
         JPanel p = new JPanel();
@@ -57,8 +45,9 @@ public class App {
             controls.moveSnake();
             game.updateSnakePos();
             game.displayGrid();
-            // System.out.println("getgrid : "+ game.getGrid());
+            
             l.setText("<html>" + game.getGrid() + "</html>");
+
             TimeUnit.MILLISECONDS.sleep(500);
         }
     }

@@ -1,12 +1,9 @@
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
 public class Grid {
     private Integer height;
     private Integer width;
-    private Integer maxSnakeSize;
     private Snake snake;
     private Integer[][] grid;
 
@@ -14,7 +11,6 @@ public class Grid {
         this.height = height;
         this.width = width;
         this.grid = new Integer[this.height][this.width];
-        this.maxSnakeSize = this.height * this.width;
     }
 
     public void initGrid() {
