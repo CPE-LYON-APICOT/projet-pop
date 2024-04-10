@@ -8,7 +8,7 @@ public class Grid {
     private Integer width;
     private Integer maxSnakeSize;
     private Snake snake;
-    private Integer [][] grid;
+    private Integer[][] grid;
 
     public Grid(Integer height, Integer width) {
         this.height = height;
@@ -28,7 +28,7 @@ public class Grid {
     public void displayGrid() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                System.out.print(grid[i][j]+" ");
+                System.out.print(grid[i][j] + " ");
             }
             System.out.println("");
         }
@@ -70,6 +70,12 @@ public class Grid {
             // if (i <= this.snake.getSize()) {
             //     this.grid[last_positions.get(i).getValue()][last_positions.get(i).getKey()] = 0;
             // }
+        }
+    }
+
+    public void generateItem(List<Item> itemList) {
+        for (int i = 0; i < itemList.size(); i++) {
+            this.grid[itemList.get(i).x][itemList.get(i).y] = 5;
         }
     }
 }
