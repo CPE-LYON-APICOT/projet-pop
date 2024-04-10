@@ -63,12 +63,11 @@ public class Grid {
             this.grid[snakeY][snakeX] = 1;
         }
 
-        for (int i = last_positions.size(); i > 0; i--) {
+    }
 
-            // if (i <= this.snake.getSize()) {
-            // this.grid[last_positions.get(i).getValue()][last_positions.get(i).getKey()] =
-            // 0;
-            // }
+    public void generateItem(List<Item> itemList) {
+        for (int i = 0; i < itemList.size(); i++) {
+            this.grid[itemList.get(i).x][itemList.get(i).y] = 5;
         }
     }
 }
