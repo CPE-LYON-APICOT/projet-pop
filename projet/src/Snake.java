@@ -7,13 +7,20 @@ public class Snake {
     private Integer size;
     private Direction direction;
     private List<Entry<Integer,Integer>> last_positions;
+    private List<Direction> last_directions;
+
+    
 
     public Snake(Integer x, Integer y) {
-        this.size = 5;
+        this.size = 1;
         this.direction = Direction.RIGHT;
         this.last_positions = new ArrayList<>();
+        this.last_directions = new ArrayList<>();
         Entry<Integer,Integer> startPos = new AbstractMap.SimpleEntry<>(x,y);
         last_positions.add(startPos);
+        last_directions.add(this.direction);
+        // for (int i = 0; i < this.size; i++) {
+        // }
     }
 
     public Integer getSize() {
@@ -24,12 +31,16 @@ public class Snake {
         this.size = size;
     }
 
-    public void IncreaseSize(Integer size) {
+    public void IncreaseSize() {
         this.size++;
     }
 
-    public void DecreaseSize(Integer size) {
+    public void DecreaseSize() {
         this.size--;
+    }
+
+    public void updateDirections(Direction direction) {
+        this.last_directions.add(direction);
     }
 
     public List<Entry<Integer,Integer>> getLastPositions() {
@@ -40,27 +51,31 @@ public class Snake {
         return direction;
     }
 
+    public List<Direction> getLastDirections() {
+        return last_directions;
+    }
+
     public boolean oppositeDirection(Direction direction) {
         boolean res = false;
 
         switch (direction) {
             case UP:
-                if (this.direction == Direction.DOWN) {
+                if (this.last_directions.getLast() == Direction.DOWN) {
                     res = true;
                 }
                 break;
             case DOWN:
-                if (this.direction == Direction.UP) {
+                if (this.last_directions.getLast() == Direction.UP) {
                     res = true;
                 }
                 break;
             case RIGHT:
-                if (this.direction == Direction.LEFT) {
+                if (this.last_directions.getLast() == Direction.LEFT) {
                     res = true;
                 }
                 break;
             case LEFT:
-                if (this.direction == Direction.RIGHT) {
+                if (this.last_directions.getLast() == Direction.RIGHT) {
                     res = true;
                 }
                 break;
@@ -72,6 +87,20 @@ public class Snake {
         if (!(this.oppositeDirection(direction))) {
             this.direction = direction;
         }
+    }
+
+    public boolean tailTouched() {
+        List<Entry<Integer,Integer>> positions, previous_positions;
+
+        positions = last_positions.reversed().subList(0, this.getSize());
+        previous_positions = last_positions.reversed().subList(this.getSize(), last_positions.size());
+
+        for (Entry<Integer,Integer> i : positions) {
+            if (previous_positions.contains(i)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Entry<Integer,Integer> getPos() {

@@ -41,10 +41,14 @@ public class App {
 
         f.addKeyListener(controls);
 
-        while (true) {
+        while (!(snek.tailTouched())) {
+            game.getSnake().IncreaseSize();
             controls.moveSnake();
             game.updateSnakePos();
-            game.displayGrid();
+            game.getSnake().updateDirections(game.getSnake().getDirection());
+            System.out.println(game.getSnake().getLastDirections());
+            
+            // game.displayGrid();
             
             l.setText("<html>" + game.getGrid() + "</html>");
 

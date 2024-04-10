@@ -5,14 +5,15 @@ public class Grid {
     private Integer height;
     private Integer width;
     private Snake snake;
+    
     private Integer[][] grid;
-
+    
     public Grid(Integer height, Integer width) {
         this.height = height;
         this.width = width;
         this.grid = new Integer[this.height][this.width];
     }
-
+    
     public void initGrid() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -20,7 +21,7 @@ public class Grid {
             }
         }
     }
-
+    
     public void displayGrid() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -30,7 +31,7 @@ public class Grid {
         }
         System.out.println("");
     }
-
+    
     public String getGrid() {
         String res = "";
         for (int i = 0; i < grid.length; i++) {
@@ -42,7 +43,11 @@ public class Grid {
         res += "<br>";
         return res;
     }
-
+    
+    public Snake getSnake() {
+        return snake;
+    }
+    
     public void addSnake(Snake snake) {
         this.snake = snake;
     }
