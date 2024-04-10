@@ -12,7 +12,7 @@ public class App {
         Item item2 = new Candy(4, 5, 0.2);
         Item item3 = new Wall(4, 2);
         Item item4 = new Wall(16, 14);
-        Item item5 = new Fruit(19, 19);
+        Item item5 = new Fruit(19, 19, 15000);
         listItems.add(item1);
         listItems.add(item2);
         listItems.add(item3);

@@ -60,15 +60,14 @@ public class Grid {
             for (Entry<Integer,Integer> i : last_positions) {
                 if (positions.contains(i)) {
                     this.grid[i.getValue()][i.getKey()] = 1;
-                }
-                else {
+                } else {
                     this.grid[i.getValue()][i.getKey()] = 0;
                 }
             }
-        }
-        else {
+        } else {
             this.grid[snakeY][snakeX] = 1;
         }
+
     }
 
     public void generateItem(List<Item> itemList) {
