@@ -10,12 +10,16 @@ public class App {
 
         /* Création des items */
         ArrayList<Item> listItems = new ArrayList<>();
-        Item item1 = new Item(0, 2);
-        Item item2 = new Item(4, 5);
-        Item item3 = new Item(4, 2);
-        Item item4 = new Item(16, 14);
-        Item item5 = new Item(19, 19);
+        Item item1 = new Candy(0, 2, 1.2);
+        Item item2 = new Candy(4, 5, 0.2);
+        Item item3 = new Wall(4, 2);
+        Item item4 = new Wall(16, 14);
+        Item item5 = new Fruit(19, 19);
         listItems.add(item1);
+        listItems.add(item2);
+        listItems.add(item3);
+        listItems.add(item4);
+        listItems.add(item5);
 
         Grid game = new Grid(20, 20);
         game.initGrid();
