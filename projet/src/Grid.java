@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 public class Grid {
     private Integer height;
     private Integer width;
-    private Integer maxSnakeSize;
     private Snake snake;
     private Integer[][] grid;
 
@@ -14,7 +13,6 @@ public class Grid {
         this.height = height;
         this.width = width;
         this.grid = new Integer[this.height][this.width];
-        this.maxSnakeSize = this.height * this.width;
     }
 
     public void initGrid() {
@@ -42,33 +40,34 @@ public class Grid {
     public void updateSnakePos() {
         Integer snakeX = this.snake.getX();
         Integer snakeY = this.snake.getY();
-        
-        
-        List<Entry<Integer,Integer>> last_positions = this.snake.getLastPositions();
-        // List<Entry<Integer,Integer>> last_positions = this.snake.getLastPositions().subList(this.snake.getLastPositions().size()-this.snake.getSize(), this.snake.getLastPositions().size());
-        
-        //A REGLER
-        // Faire en sorte que les n dernières positions du serpent soient des 1, et les autres des 0
+
+        List<Entry<Integer, Integer>> last_positions = this.snake.getLastPositions();
+        // List<Entry<Integer,Integer>> last_positions =
+        // this.snake.getLastPositions().subList(this.snake.getLastPositions().size()-this.snake.getSize(),
+        // this.snake.getLastPositions().size());
+
+        // A REGLER
+        // Faire en sorte que les n dernières positions du serpent soient des 1, et les
+        // autres des 0
         if (last_positions.size() >= this.snake.getSize()) {
-            List<Entry<Integer,Integer>> positions = last_positions.reversed().subList(0, this.snake.getSize());
+            List<Entry<Integer, Integer>> positions = last_positions.reversed().subList(0, this.snake.getSize());
             System.out.println(positions);
-            for (Entry<Integer,Integer> i : last_positions) {
+            for (Entry<Integer, Integer> i : last_positions) {
                 if (positions.contains(i)) {
                     this.grid[i.getValue()][i.getKey()] = 1;
-                }
-                else {
+                } else {
                     this.grid[i.getValue()][i.getKey()] = 0;
                 }
             }
-        }
-        else {
+        } else {
             this.grid[snakeY][snakeX] = 1;
         }
 
         for (int i = last_positions.size(); i > 0; i--) {
 
             // if (i <= this.snake.getSize()) {
-            //     this.grid[last_positions.get(i).getValue()][last_positions.get(i).getKey()] = 0;
+            // this.grid[last_positions.get(i).getValue()][last_positions.get(i).getKey()] =
+            // 0;
             // }
         }
     }

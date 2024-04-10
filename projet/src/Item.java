@@ -1,31 +1,19 @@
 abstract class Item {
 
+    protected Integer x;
+    protected Integer y;
+
     public Item(Integer x, Integer y) {
         this.x = x;
         this.y = y;
     }
 
-    protected Integer x;
-    protected Integer y;
-
+    /*
+     * public SpecialEffects getEffect() {
+     * return SpecialEffects.EFFET1;
+     * }
+     */
+    public String getPosition(Item unItem) {
+        return "x : " + unItem.x + "\n y : " + unItem.y;
+    }
 }
-
-/* Construction des items */
-
-interface ConstructorItem {
-
-    public Item constructFruit();
-
-    public Item constructCandy();
-
-    public Item constructWall();
-}
-
-/*
- * interface ItemFactory{
- * 
- * 
- * 
- * 
- * }
- */
