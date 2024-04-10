@@ -1,7 +1,17 @@
 public class Candy extends Item {
 
-    public Candy(Integer x, Integer y, double speedMultiplicator) {
-        super(x, y);
+    private double speed;
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
     }
 
+    public Candy(Integer x, Integer y, double speed) {
+        super(x, y);
+        this.speed = speed;
+    }
+
+    public Double getSpeed() {
+        return this.speed;
+    }
 }

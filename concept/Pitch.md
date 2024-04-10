@@ -22,6 +22,12 @@ Menu d'accueil pour :
 Ecran de jeu qui représente la grille et ce qui est dessus
 
 
+### Fonctionnalités additionnelles :
+
+- Les bonbons font varier la vitesse du serpent
+- Les fruits confèrent des points
+- D'autres objets auront des effets qui leur seront propres (épée, bouclier)
+
 ## Technique
 observeur grille : observer / observable
 - Classe de gestion de la grille de jeu 
