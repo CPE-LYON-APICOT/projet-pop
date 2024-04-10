@@ -35,6 +35,18 @@ public class Grid {
         System.out.println("");
     }
 
+    public String getGrid() {
+        String res = "";
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                res += grid[i][j] + " ";
+            }
+            res += "<br>";
+        }
+        res += "<br>";
+        return res;
+    }
+
     public void addSnake(Snake snake) {
         this.snake = snake;
     }
@@ -45,13 +57,10 @@ public class Grid {
         
         
         List<Entry<Integer,Integer>> last_positions = this.snake.getLastPositions();
-        // List<Entry<Integer,Integer>> last_positions = this.snake.getLastPositions().subList(this.snake.getLastPositions().size()-this.snake.getSize(), this.snake.getLastPositions().size());
-        
-        //A REGLER
-        // Faire en sorte que les n dernières positions du serpent soient des 1, et les autres des 0
+
         if (last_positions.size() >= this.snake.getSize()) {
             List<Entry<Integer,Integer>> positions = last_positions.reversed().subList(0, this.snake.getSize());
-            System.out.println(positions);
+
             for (Entry<Integer,Integer> i : last_positions) {
                 if (positions.contains(i)) {
                     this.grid[i.getValue()][i.getKey()] = 1;
@@ -63,13 +72,6 @@ public class Grid {
         }
         else {
             this.grid[snakeY][snakeX] = 1;
-        }
-
-        for (int i = last_positions.size(); i > 0; i--) {
-
-            // if (i <= this.snake.getSize()) {
-            //     this.grid[last_positions.get(i).getValue()][last_positions.get(i).getKey()] = 0;
-            // }
         }
     }
 

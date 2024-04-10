@@ -5,11 +5,9 @@ import java.util.Map.Entry;
 
 public class SnakeController implements KeyListener {
     private Snake snake;
-    private Grid grid;
 
     public SnakeController(Snake snake, Grid grid) {
         this.snake = snake;
-        this.grid = grid;
     }
 
     //MOUVEMENTS

@@ -9,7 +9,7 @@ public class Snake {
     private List<Entry<Integer,Integer>> last_positions;
 
     public Snake(Integer x, Integer y) {
-        this.size = 1;
+        this.size = 5;
         this.direction = Direction.RIGHT;
         this.last_positions = new ArrayList<>();
         Entry<Integer,Integer> startPos = new AbstractMap.SimpleEntry<>(x,y);
