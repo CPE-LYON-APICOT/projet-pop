@@ -40,8 +40,38 @@ public class Snake {
         return direction;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    public boolean oppositeDirection(Direction direction) {
+        boolean res = false;
+
+        switch (direction) {
+            case UP:
+                if (this.direction == Direction.DOWN) {
+                    res = true;
+                }
+                break;
+            case DOWN:
+                if (this.direction == Direction.UP) {
+                    res = true;
+                }
+                break;
+            case RIGHT:
+                if (this.direction == Direction.LEFT) {
+                    res = true;
+                }
+                break;
+            case LEFT:
+                if (this.direction == Direction.RIGHT) {
+                    res = true;
+                }
+                break;
+        }
+        return res;
+    }
+
+    public void setValidDirection(Direction direction) {
+        if (!(this.oppositeDirection(direction))) {
+            this.direction = direction;
+        }
     }
 
 
