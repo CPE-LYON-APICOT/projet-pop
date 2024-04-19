@@ -91,7 +91,7 @@ public class Snake {
     }
 
     public boolean tailTouched() {
-        List<Entry<Integer,Integer>> positions, previous_positions;
+        List<Entry<Integer,Integer>> positions/* , previous_positions */;
 
         positions = last_positions.reversed().subList(0, size);
         // previous_positions = last_positions.reversed().subList(size, last_positions.size());
