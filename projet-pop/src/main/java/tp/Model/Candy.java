@@ -17,3 +17,4 @@ public class Candy extends Item {
         return this.speed;
     }
 }
+
