@@ -1,9 +1,7 @@
-import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.Label;
+import java.awt.Font;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
-import java.util.List;
+import javax.swing.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -26,29 +24,30 @@ public class App {
         Snake snek = new Snake(10, 10);
         game.addSnake(snek);
         SnakeController controls = new SnakeController(snek, game);
-        // game.updateSnakePos(snek);
-        // game.displayGrid();
-        // game.moveSnake(snek, Direction.UP);
-        // game.updateSnakePos(snek);
-        // game.displayGrid();
 
         game.generateItem(listItems);
 
-        Frame test = new Frame("test");
-        test.setLayout(new FlowLayout());
-        test.setSize(500, 500);
-        Label l = new Label();
-        l.setText("This is a demonstration");
-        test.add(l);
-        test.setVisible(true);
+        JFrame f = new JFrame("label");
+        JLabel l = new JLabel();
+        JPanel p = new JPanel();
 
-        test.addKeyListener(controls);
+        l.setFont(new Font("Monospaced", Font.PLAIN, 20));
+
+        p.add(l);
+ 
+        f.add(p);
+        f.setSize(1000, 700);
+        f.setVisible(true);
+
+        f.addKeyListener(controls);
 
         while (true) {
             controls.moveSnake();
             game.updateSnakePos();
             game.displayGrid();
-            // game.moveSnake(snek, Direction.RIGHT);
+            
+            l.setText("<html>" + game.getGrid() + "</html>");
+
             TimeUnit.MILLISECONDS.sleep(500);
         }
     }

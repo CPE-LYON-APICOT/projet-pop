@@ -1,5 +1,3 @@
-import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -33,6 +31,18 @@ public class Grid {
         System.out.println("");
     }
 
+    public String getGrid() {
+        String res = "";
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                res += grid[i][j] + " ";
+            }
+            res += "<br>";
+        }
+        res += "<br>";
+        return res;
+    }
+
     public void addSnake(Snake snake) {
         this.snake = snake;
     }
@@ -40,19 +50,14 @@ public class Grid {
     public void updateSnakePos() {
         Integer snakeX = this.snake.getX();
         Integer snakeY = this.snake.getY();
+        
+        
+        List<Entry<Integer,Integer>> last_positions = this.snake.getLastPositions();
 
-        List<Entry<Integer, Integer>> last_positions = this.snake.getLastPositions();
-        // List<Entry<Integer,Integer>> last_positions =
-        // this.snake.getLastPositions().subList(this.snake.getLastPositions().size()-this.snake.getSize(),
-        // this.snake.getLastPositions().size());
-
-        // A REGLER
-        // Faire en sorte que les n dernières positions du serpent soient des 1, et les
-        // autres des 0
         if (last_positions.size() >= this.snake.getSize()) {
-            List<Entry<Integer, Integer>> positions = last_positions.reversed().subList(0, this.snake.getSize());
-            System.out.println(positions);
-            for (Entry<Integer, Integer> i : last_positions) {
+            List<Entry<Integer,Integer>> positions = last_positions.reversed().subList(0, this.snake.getSize());
+
+            for (Entry<Integer,Integer> i : last_positions) {
                 if (positions.contains(i)) {
                     this.grid[i.getValue()][i.getKey()] = 1;
                 } else {

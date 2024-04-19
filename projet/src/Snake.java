@@ -9,7 +9,7 @@ public class Snake {
     private List<Entry<Integer,Integer>> last_positions;
 
     public Snake(Integer x, Integer y) {
-        this.size = 1;
+        this.size = 5;
         this.direction = Direction.RIGHT;
         this.last_positions = new ArrayList<>();
         Entry<Integer,Integer> startPos = new AbstractMap.SimpleEntry<>(x,y);
@@ -40,10 +40,39 @@ public class Snake {
         return direction;
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    public boolean oppositeDirection(Direction direction) {
+        boolean res = false;
+
+        switch (direction) {
+            case UP:
+                if (this.direction == Direction.DOWN) {
+                    res = true;
+                }
+                break;
+            case DOWN:
+                if (this.direction == Direction.UP) {
+                    res = true;
+                }
+                break;
+            case RIGHT:
+                if (this.direction == Direction.LEFT) {
+                    res = true;
+                }
+                break;
+            case LEFT:
+                if (this.direction == Direction.RIGHT) {
+                    res = true;
+                }
+                break;
+        }
+        return res;
     }
 
+    public void setValidDirection(Direction direction) {
+        if (!(this.oppositeDirection(direction))) {
+            this.direction = direction;
+        }
+    }
 
     public Entry<Integer,Integer> getPos() {
         return last_positions.getLast();
