@@ -12,7 +12,7 @@ import java.util.logging.Level;
  *  - 
  */ 
 
-interface IBuilder {
+interface iBuilder {
     public void reset();
     public void setWalls();
     public void setFruits();
