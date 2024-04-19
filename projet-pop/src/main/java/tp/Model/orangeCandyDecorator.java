@@ -7,8 +7,8 @@ class orangeCandyDecorator extends candyDecorator{
     }
 
     @Override
-    public Double getSpeed(){
-        return decoratedCandy.getSpeed()+0.5;
+    public Double setSpeed(){
+        return 0.5;
     }
     
 }

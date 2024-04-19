@@ -5,8 +5,8 @@ import java.util.Observable;
 
 import org.springframework.stereotype.Component;
 
-import tp.Model.Candy;
-import tp.Model.Fruit;
+/*import tp.Model.iCandy;
+import tp.Model.iFruit;*/
 import tp.Model.Item;
 import tp.Model.Snake;
 import tp.Model.Wall;
@@ -50,11 +50,14 @@ public class ObjetService {
     }
 
     private void generateItems() {
-        getListItems().add(new Candy(0, 2, 1.2));
-        getListItems().add(new Candy(4, 5, 0.2));
-        getListItems().add(new Wall(4, 2));
+        getListItems().add(new Wall(0, 0));
         getListItems().add(new Wall(16, 14));
-        getListItems().add(new Fruit(19, 19, 15000));
+        getListItems().add(new Wall(5, 2));
+        getListItems().add(new Wall(16, 13));
+        getListItems().add(new Wall(6, 12));
+        getListItems().add(new Wall(16, 14));
+        getListItems().add(new Wall(7, 2));
+        getListItems().add(new Wall(16, 15));
     }
 
 }

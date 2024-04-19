@@ -19,7 +19,7 @@ public class decoratorMain {
         System.out.println("Le fruit vert vaut "+greenFruit.getPoints()+" points");
         System.out.println("Le fruit orange vaut "+orangeFruit.getPoints()+" points");
 
-        System.out.println("Le bonbon vert applique une vitesse de "+greenCandy.getSpeed());
-        System.out.println("Le bonbon orange applique une vitesse de "+orangeCandy.getSpeed());
+        System.out.println("Le bonbon vert applique une vitesse de "+greenCandy.setSpeed());
+        System.out.println("Le bonbon orange applique une vitesse de "+orangeCandy.setSpeed());
     }
 }
