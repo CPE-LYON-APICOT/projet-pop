@@ -100,7 +100,7 @@ public class Snake extends Observable {
 
         positions = last_positions.reversed().subList(0, size);
         // previous_positions = last_positions.reversed().subList(size, last_positions.size());
-        System.out.println(positions);
+        // System.out.println(positions);
         // System.out.println(previous_positions);
         
 
@@ -113,15 +113,15 @@ public class Snake extends Observable {
     }
 
     public Entry<Integer,Integer> getPos() {
-        return last_positions.get(last_positions.size() - 1);
+        return last_positions.getLast();
     }
 
     public Integer getX() {
-        return last_positions.get(last_positions.size() - 1).getKey();
+        return last_positions.getLast().getKey();
     }
 
     public Integer getY() {
-        return last_positions.get(last_positions.size() - 1).getValue();
+        return last_positions.getLast().getValue();
     }
 
     public void move(Entry<Integer, Integer> position) {

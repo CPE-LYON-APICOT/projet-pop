@@ -43,7 +43,7 @@ public class Game {
 
         f.addKeyListener(snakeController);
         
-        System.out.println("hauteur : " + game.getHeight() + "largeur : " + game.getWidth());
+        // System.out.println("hauteur : " + game.getHeight() + "largeur : " + game.getWidth());
         while (!(snakeSingleton.getInstance().tailTouched() || game.snakeOutOfBounds())) {
             // game.getSnake().IncreaseSize();
             snakeController.moveSnake();
