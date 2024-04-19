@@ -40,16 +40,22 @@ public class App {
         f.setVisible(true);
 
         f.addKeyListener(controls);
-
-        while (true) {
+        
+        System.out.println("hauteur : " + game.getHeight() + "largeur : " + game.getWidth());
+        while (!(snek.tailTouched() || game.snakeOutOfBounds())) {
+            // game.getSnake().IncreaseSize();
             controls.moveSnake();
             game.updateSnakePos();
-            game.displayGrid();
+            game.getSnake().updateDirections(game.getSnake().getDirection());
+            // System.out.println(game.getSnake().getLastDirections());
+            
+            // game.displayGrid();
             
             l.setText("<html>" + game.getGrid() + "</html>");
 
             TimeUnit.MILLISECONDS.sleep(500);
         }
+        System.out.println("fin partie");
     }
 
 }
