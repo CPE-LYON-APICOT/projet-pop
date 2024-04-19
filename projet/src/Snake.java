@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.AbstractMap;
@@ -92,11 +93,14 @@ public class Snake {
     public boolean tailTouched() {
         List<Entry<Integer,Integer>> positions, previous_positions;
 
-        positions = last_positions.reversed().subList(0, this.getSize());
-        previous_positions = last_positions.reversed().subList(this.getSize(), last_positions.size());
+        positions = last_positions.reversed().subList(0, size);
+        // previous_positions = last_positions.reversed().subList(size, last_positions.size());
+        System.out.println(positions);
+        // System.out.println(previous_positions);
+        
 
         for (Entry<Integer,Integer> i : positions) {
-            if (previous_positions.contains(i)) {
+            if (Collections.frequency(positions, i) > 1) {
                 return true;
             }
         }

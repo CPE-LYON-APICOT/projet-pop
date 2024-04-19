@@ -5,8 +5,14 @@ public class Grid {
     private Integer height;
     private Integer width;
     private Snake snake;
-    
     private Integer[][] grid;
+
+    public Integer getHeight() {
+        return height;
+    }
+    public Integer getWidth() {
+        return width;
+    }
     
     public Grid(Integer height, Integer width) {
         this.height = height;

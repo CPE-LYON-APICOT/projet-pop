@@ -41,12 +41,12 @@ public class App {
 
         f.addKeyListener(controls);
 
-        while (!(snek.tailTouched())) {
+        while (!(snek.tailTouched() /*|| snek.getX() > game.get*/)) {
             game.getSnake().IncreaseSize();
             controls.moveSnake();
             game.updateSnakePos();
             game.getSnake().updateDirections(game.getSnake().getDirection());
-            System.out.println(game.getSnake().getLastDirections());
+            // System.out.println(game.getSnake().getLastDirections());
             
             // game.displayGrid();
             
@@ -54,6 +54,8 @@ public class App {
 
             TimeUnit.MILLISECONDS.sleep(500);
         }
+        System.out.println("hauteur : " + game.getHeight() + "largeur : " + game.getWidth());
+        System.out.println("fin partie");
     }
 
 }
