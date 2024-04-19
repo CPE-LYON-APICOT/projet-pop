@@ -1,3 +1,6 @@
+import java.util.AbstractMap;
+import java.util.Map.Entry;
+
 abstract class Item {
 
     protected Integer x;
@@ -7,13 +10,14 @@ abstract class Item {
         this.x = x;
         this.y = y;
     }
-
+    
     /*
      * public SpecialEffects getEffect() {
      * return SpecialEffects.EFFET1;
      * }
      */
-    public String getPosition(Item unItem) {
-        return "x : " + unItem.x + "\n y : " + unItem.y;
+    public Entry<Integer, Integer> getPosition() {
+        Entry<Integer, Integer>  coordonneesItem = new AbstractMap.SimpleEntry<>(x, y);
+        return coordonneesItem;
     }
 }
