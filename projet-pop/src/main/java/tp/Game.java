@@ -1,31 +1,33 @@
+package tp;
+
 import java.awt.Font;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class App {
-    public static void main(String[] args) throws Exception {
+import org.springframework.stereotype.Component;
 
-        /* Création des items */
-        ArrayList<Item> listItems = new ArrayList<>();
-        Item item1 = new Candy(0, 2, 1.2);
-        Item item2 = new Candy(4, 5, 0.2);
-        Item item3 = new Wall(4, 2);
-        Item item4 = new Wall(16, 14);
-        Item item5 = new Fruit(19, 19, 15000);
-        listItems.add(item1);
-        listItems.add(item2);
-        listItems.add(item3);
-        listItems.add(item4);
-        listItems.add(item5);
+import tp.Controllers.SnakeController;
+import tp.Services.SnakeSingleton;
+import tp.View.Grid;
 
-        Grid game = new Grid(20, 20);
-        game.initGrid();
-        Snake snek = new Snake(10, 10);
-        game.addSnake(snek);
-        SnakeController controls = new SnakeController(snek, game);
 
-        game.generateItem(listItems);
+@Component
+public class Game {
+    private SnakeSingleton snakeSingleton;
+    private Grid game;
+    private SnakeController snakeController;
+
+    public Game(SnakeSingleton snakeSingleton, Grid game, SnakeController snakeController) {
+        
+        this.snakeSingleton = snakeSingleton;
+        this.game = game;
+        this.snakeController = snakeController;
+    }
+
+    public void launch() throws InterruptedException {
+       
+    
 
         JFrame f = new JFrame("label");
         JLabel l = new JLabel();
@@ -39,12 +41,12 @@ public class App {
         f.setSize(1000, 700);
         f.setVisible(true);
 
-        f.addKeyListener(controls);
+        f.addKeyListener(snakeController);
         
         System.out.println("hauteur : " + game.getHeight() + "largeur : " + game.getWidth());
-        while (!(snek.tailTouched() || game.snakeOutOfBounds())) {
+        while (!(snakeSingleton.getInstance().tailTouched() || game.snakeOutOfBounds())) {
             // game.getSnake().IncreaseSize();
-            controls.moveSnake();
+            snakeController.moveSnake();
             game.updateSnakePos();
             game.getSnake().updateDirections(game.getSnake().getDirection());
             // System.out.println(game.getSnake().getLastDirections());
@@ -57,5 +59,5 @@ public class App {
         }
         System.out.println("fin partie");
     }
-
 }
+

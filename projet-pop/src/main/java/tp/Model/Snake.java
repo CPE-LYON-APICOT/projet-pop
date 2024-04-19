@@ -1,10 +1,15 @@
+package tp.Model;
+
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.AbstractMap;
+import java.util.Observable;
 
-public class Snake {
+import tp.ATRIER.Direction;
+
+public class Snake extends Observable {
     private Integer size;
     private Direction direction;
     private List<Entry<Integer,Integer>> last_positions;
@@ -61,22 +66,22 @@ public class Snake {
 
         switch (direction) {
             case UP:
-                if (this.last_directions.getLast() == Direction.DOWN) {
+                if (this.last_directions.get(last_directions.size() - 1) == Direction.DOWN) {
                     res = true;
                 }
                 break;
             case DOWN:
-                if (this.last_directions.getLast() == Direction.UP) {
+                if (this.last_directions.get(last_directions.size() - 1) == Direction.UP) {
                     res = true;
                 }
                 break;
             case RIGHT:
-                if (this.last_directions.getLast() == Direction.LEFT) {
+                if (this.last_directions.get(last_directions.size() - 1) == Direction.LEFT) {
                     res = true;
                 }
                 break;
             case LEFT:
-                if (this.last_directions.getLast() == Direction.RIGHT) {
+                if (this.last_directions.get(last_directions.size() - 1) == Direction.RIGHT) {
                     res = true;
                 }
                 break;
@@ -108,18 +113,20 @@ public class Snake {
     }
 
     public Entry<Integer,Integer> getPos() {
-        return last_positions.getLast();
+        return last_positions.get(last_positions.size() - 1);
     }
 
     public Integer getX() {
-        return last_positions.getLast().getKey();
+        return last_positions.get(last_positions.size() - 1).getKey();
     }
 
     public Integer getY() {
-        return last_positions.getLast().getValue();
+        return last_positions.get(last_positions.size() - 1).getValue();
     }
 
     public void move(Entry<Integer, Integer> position) {
         last_positions.add(position);
+        this.setChanged();
+        this.notifyObservers(this);
     }
 }

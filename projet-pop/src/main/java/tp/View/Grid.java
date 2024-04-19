@@ -1,11 +1,21 @@
+package tp.View;
+
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.springframework.stereotype.Component;
+
+import tp.Model.Item;
+import tp.Model.Snake;
+import tp.Services.ObjetService;
+import tp.Services.SnakeSingleton;
+@Component
 public class Grid {
     private Integer height;
     private Integer width;
     private Snake snake;
     private Integer[][] grid;
+    private ObjetService objetService;
 
     public Integer getHeight() {
         return height;
@@ -14,10 +24,14 @@ public class Grid {
         return width;
     }
     
-    public Grid(Integer height, Integer width) {
-        this.height = height;
-        this.width = width;
+    public Grid(SnakeSingleton snakeSingleton, ObjetService objetService) {
+        this.objetService = objetService;
+        this.snake = snakeSingleton.getInstance();
+        this.height = 20;
+        this.width = 20;
         this.grid = new Integer[this.height][this.width];
+        initGrid();
+        generateItem(objetService.getListItems());
     }
     
     public void initGrid() {
@@ -54,9 +68,6 @@ public class Grid {
         return snake;
     }
     
-    public void addSnake(Snake snake) {
-        this.snake = snake;
-    }
 
     public boolean snakeOutOfBounds() {
         if (snake.getX() >= width || snake.getX() < 0 || snake.getY() >= height || snake.getY() < 0) {
@@ -92,7 +103,7 @@ public class Grid {
 
     public void generateItem(List<Item> itemList) {
         for (int i = 0; i < itemList.size(); i++) {
-            this.grid[itemList.get(i).x][itemList.get(i).y] = 5;
+            this.grid[itemList.get(i).getX()][itemList.get(i).getY()] = 5;
         }
     }
 }

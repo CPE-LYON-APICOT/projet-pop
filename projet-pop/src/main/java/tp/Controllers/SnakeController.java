@@ -1,13 +1,20 @@
+package tp.Controllers;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.AbstractMap;
 import java.util.Map.Entry;
 
-public class SnakeController implements KeyListener {
-    private Snake snake;
+import org.springframework.stereotype.Component;
 
-    public SnakeController(Snake snake, Grid grid) {
-        this.snake = snake;
+import tp.ATRIER.Direction;
+import tp.Services.SnakeSingleton;
+import tp.View.Grid;
+@Component
+public class SnakeController implements KeyListener {
+    private tp.Model.Snake snake;
+
+    public SnakeController(SnakeSingleton snake, Grid grid) {
+        this.snake = snake.getInstance();
     }
 
     //MOUVEMENTS

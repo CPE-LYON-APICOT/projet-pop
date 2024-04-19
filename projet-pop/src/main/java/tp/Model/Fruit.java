@@ -1,3 +1,5 @@
+package tp.Model;
+
 public class Fruit extends Item {
 
     private Integer points;

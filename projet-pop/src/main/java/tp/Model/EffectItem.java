@@ -1,3 +1,7 @@
+package tp.Model;
+
+import tp.ATRIER.SpecialEffects;
+
 public abstract class EffectItem extends Item {
 
     public EffectItem(Integer x, Integer y) {

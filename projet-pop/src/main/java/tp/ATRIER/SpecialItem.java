@@ -1,3 +1,4 @@
+package tp.ATRIER;
 public interface SpecialItem {
     void setSpeed();
 

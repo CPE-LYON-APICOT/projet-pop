@@ -1,3 +1,5 @@
+package tp.Model;
+
 public class Candy extends Item {
 
     private double speed;
