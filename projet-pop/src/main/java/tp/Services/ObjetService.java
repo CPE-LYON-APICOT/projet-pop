@@ -7,11 +7,13 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import tp.Model.Candy;
-import tp.Model.Fruit;
+import tp.Model.basicCandy;
+import tp.Model.basicFruit;
+import tp.Model.greenFruitDecorator;
 import tp.Model.Item;
 import tp.Model.Snake;
 import tp.Model.Wall;
+import tp.Model.iFruit;
 
 @Component
 public class ObjetService {
@@ -48,22 +50,28 @@ public class ObjetService {
             if (potentialItem.isPresent()) {
                 Item item = potentialItem.get();
                 System.out.println("L'objet " + item.getClass().getName() + " a été ramassé");
+                if (item.getClass().getName() == "tp.Model.basicFruit") {
+                    basicFruit fruit = (basicFruit) potentialItem.get();
+                    System.out.println("nom");
+                    sn.IncreaseSize();
+                    System.out.println(fruit.getPoints());
+                }
             }
         }
     }
 
     private void generateItems() {
-        getListItems().add(new Candy(0, 2, 1.2));
-        getListItems().add(new Candy(4, 5, 0.2));
-        getListItems().add(new Wall(4, 2));
-        getListItems().add(new Wall(16, 14));
-        getListItems().add(new Fruit(0, 2, 15000));
-        getListItems().add(new Fruit(4, 5, 15000));
-        getListItems().add(new Fruit(10, 8, 15000));
-        getListItems().add(new Fruit(19, 19, 15000));
-        getListItems().add(new Fruit(19, 18, 15000));
-        getListItems().add(new Fruit(18, 19, 15000));
-        getListItems().add(new Fruit(18, 18, 15000));
+        // getListItems().add(new Candy(0, 2, 1.2));
+        // getListItems().add(new Candy(4, 5, 0.2));
+        // getListItems().add(new Wall(4, 2));
+        // getListItems().add(new Wall(16, 14));
+        getListItems().add(new basicFruit(0, 2));
+        getListItems().add(new basicFruit(4, 5));
+        getListItems().add(new basicFruit(10, 8));
+        getListItems().add(new basicFruit(19, 19));
+        getListItems().add(new basicFruit(19, 18));
+        // getListItems().add(iFruit(18,19)/* fruit = new basicFruit(18, 19))*/);
+        getListItems().add(new basicFruit(18, 18));
     }
 
 }

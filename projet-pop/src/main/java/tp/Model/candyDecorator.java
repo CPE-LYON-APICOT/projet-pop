@@ -1,10 +1,21 @@
 package tp.Model;
-abstract class candyDecorator implements iCandy{
+class candyDecorator extends ItemDecorator {
 
-    protected iCandy decoratedCandy;
+    protected iItem decoratedCandy;
 
-    public candyDecorator(iCandy candy){
-        this.decoratedCandy = candy;
+    public candyDecorator(iItem candy){
+        super(candy);
     }
+
+    @Override
+    public Integer getPoints() {
+        return 0;
+    }
+
+    @Override
+    public Double getSpeed() {
+        return 1.0;
+    }
+
     
 }

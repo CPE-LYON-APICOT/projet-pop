@@ -3,13 +3,13 @@ package tp.Model;
 
 class orangeFruitDecorator extends fruitDecorator{
 
-    public orangeFruitDecorator(iFruit fruit) {
+    public orangeFruitDecorator(iItem fruit) {
         super(fruit);
     }
 
     @Override
     public Integer getPoints(){
-        return decoratedFruit.getPoints()+2000;
+        return decoratedItem.getPoints()+2000;
     }
 
     

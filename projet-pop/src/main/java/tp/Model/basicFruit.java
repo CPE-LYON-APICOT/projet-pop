@@ -1,10 +1,18 @@
 package tp.Model;
-class basicFruit implements iFruit{
+public class basicFruit extends Item /*  implements iItem */{
     
-    @Override
-    public Integer getPoints()
-    {
-        return 500;
+    public basicFruit(Integer x, Integer y) {
+        super(x, y);
     }
+
+    // @Override
+    // public Double getSpeed() {
+    //     return 1.0;
+    // }
+
+    // @Override
+    // public Integer getPoints() {
+    //     return 500;
+    // }
     
 }

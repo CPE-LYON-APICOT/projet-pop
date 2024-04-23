@@ -2,13 +2,13 @@ package tp.Model;
 
 class orangeCandyDecorator extends candyDecorator{
 
-    public orangeCandyDecorator(iCandy candy) {
+    public orangeCandyDecorator(iItem candy) {
         super(candy);
     }
 
     @Override
     public Double getSpeed(){
-        return decoratedCandy.getSpeed()+0.5;
+        return decoratedItem.getSpeed()+0.5;
     }
     
 }

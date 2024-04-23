@@ -1,10 +1,19 @@
 package tp.Model;
-class basicCandy implements iCandy{
+public class basicCandy extends Item /*implements iItem */{
 
-    @Override
-    public Double getSpeed(){
-        return 1.0;
+    public basicCandy(Integer x, Integer y) {
+        super(x, y);
     }
+    
+    // @Override
+    // public Double getSpeed() {
+    //     return 1.5;
+    // }
+
+    // @Override
+    // public Integer getPoints() {
+    //     return 0;
+    // }
 
     
 }

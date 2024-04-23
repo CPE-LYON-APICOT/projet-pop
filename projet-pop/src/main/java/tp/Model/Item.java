@@ -4,8 +4,8 @@ import java.util.Map.Entry;
 
 public abstract class Item {
 
-    private Integer x;
-    private Integer y;
+    protected static Integer x;
+    protected static Integer y;
 
     public Item(Integer x, Integer y) {
         this.setX(x);
@@ -31,6 +31,9 @@ public abstract class Item {
         this.x = x;
         
     }
+
+    // public abstract Integer getPoints();
+    // public abstract Double getSpeed();
 
     /*
      * public SpecialEffects getEffect() {

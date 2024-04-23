@@ -1,13 +1,13 @@
 package tp.Model;
-class greenFruitDecorator extends fruitDecorator{
+public class greenFruitDecorator extends fruitDecorator{
 
-    public greenFruitDecorator(iFruit fruit) {
-        super(fruit);
+    public greenFruitDecorator(iItem item) {
+        super(item);
     }
 
     @Override
     public Integer getPoints(){
-        return decoratedFruit.getPoints()+1000;
+        return decoratedItem.getPoints()+1000;
     }
 
     
