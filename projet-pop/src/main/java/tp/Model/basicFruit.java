@@ -5,11 +5,6 @@ public class basicFruit extends Item /*  implements iItem */{
         super(x, y);
     }
 
-    // @Override
-    // public Double getSpeed() {
-    //     return 1.0;
-    // }
-
     @Override
     public Integer getPoints() {
         return 1;

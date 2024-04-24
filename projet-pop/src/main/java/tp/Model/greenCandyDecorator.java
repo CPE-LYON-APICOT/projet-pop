@@ -1,5 +1,5 @@
 package tp.Model;
-class greenCandyDecorator extends candyDecorator{
+class greenCandyDecorator extends candyDecorator {
 
     public greenCandyDecorator(iItem candy) {
         super(candy);

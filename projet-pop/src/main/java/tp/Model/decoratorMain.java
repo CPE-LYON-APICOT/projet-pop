@@ -11,6 +11,10 @@ public class decoratorMain {
         // Decorate the fruit with green point value
         greenFruit = new greenCandyDecorator(greenFruit);
         greenFruit = new greenFruitDecorator(greenFruit);
+        greenFruit = new greenFruitDecorator(greenFruit);
+        greenFruit = new greenCandyDecorator(greenFruit);
+        greenFruit = new greenCandyDecorator(greenFruit);
+        greenFruit = new orangeCandyDecorator(greenFruit);
         orangeFruit = new orangeFruitDecorator(orangeFruit);
 
         greenCandy = new greenCandyDecorator(greenCandy);

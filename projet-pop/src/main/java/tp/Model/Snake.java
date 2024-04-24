@@ -9,6 +9,8 @@ import java.util.Observable;
 
 import tp.ATRIER.Direction;
 
+@SuppressWarnings("deprecation")
+
 public class Snake extends Observable {
     private Integer size;
     private Direction direction;

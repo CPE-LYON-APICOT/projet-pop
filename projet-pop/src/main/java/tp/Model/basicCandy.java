@@ -10,10 +10,5 @@ public class basicCandy extends Item {
         return 1.5;
     }
 
-    // @Override
-    // public Integer getPoints() {
-    //     return 0;
-    // }
-
     
 }

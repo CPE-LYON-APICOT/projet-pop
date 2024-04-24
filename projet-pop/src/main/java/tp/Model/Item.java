@@ -4,8 +4,8 @@ import java.util.Map.Entry;
 
 public abstract class Item implements iItem {
 
-    protected static Integer x;
-    protected static Integer y;
+    protected Integer x;
+    protected Integer y;
 
     public Item(Integer x, Integer y) {
         this.setX(x);
