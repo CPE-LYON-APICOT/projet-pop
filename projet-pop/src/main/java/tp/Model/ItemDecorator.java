@@ -1,6 +1,6 @@
 package tp.Model;
 
-public abstract class ItemDecorator implements iItem{
+public class ItemDecorator {
     protected iItem decoratedItem;
 
     public ItemDecorator(iItem item){

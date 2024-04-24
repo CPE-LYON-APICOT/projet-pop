@@ -9,8 +9,8 @@ public class decoratorMain {
         iItem orangeCandy = new basicCandy(1,4);
 
         // Decorate the fruit with green point value
-        greenFruit = new greenFruitDecorator(greenFruit);
         greenFruit = new greenCandyDecorator(greenFruit);
+        greenFruit = new greenFruitDecorator(greenFruit);
         orangeFruit = new orangeFruitDecorator(orangeFruit);
 
         greenCandy = new greenCandyDecorator(greenCandy);

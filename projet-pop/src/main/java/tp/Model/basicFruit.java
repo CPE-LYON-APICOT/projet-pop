@@ -10,9 +10,9 @@ public class basicFruit extends Item /*  implements iItem */{
     //     return 1.0;
     // }
 
-    // @Override
-    // public Integer getPoints() {
-    //     return 500;
-    // }
+    @Override
+    public Integer getPoints() {
+        return 1;
+    }
     
 }

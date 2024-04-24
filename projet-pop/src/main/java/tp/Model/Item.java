@@ -2,7 +2,7 @@ package tp.Model;
 import java.util.AbstractMap;
 import java.util.Map.Entry;
 
-public abstract class Item {
+public abstract class Item implements iItem {
 
     protected static Integer x;
     protected static Integer y;
@@ -31,9 +31,15 @@ public abstract class Item {
         this.x = x;
         
     }
-
-    // public abstract Integer getPoints();
-    // public abstract Double getSpeed();
+    @Override
+    public Integer getPoints() {
+        return 0;
+    }
+    
+    @Override
+    public Double getSpeed() {
+        return 1.0;
+    }
 
     /*
      * public SpecialEffects getEffect() {

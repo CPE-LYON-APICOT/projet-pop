@@ -7,14 +7,8 @@ class fruitDecorator extends ItemDecorator {
         super(fruit);
     }
 
-    @Override
     public Integer getPoints() {
         return 1;
-    }
-
-    @Override
-    public Double getSpeed() {
-        return 1.0;
     }
 
 }
