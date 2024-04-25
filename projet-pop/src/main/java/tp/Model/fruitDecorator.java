@@ -1,10 +1,13 @@
 package tp.Model;
-abstract class fruitDecorator implements iFruit{
+class fruitDecorator extends ItemDecorator {
 
-    protected iFruit decoratedFruit;
+    public fruitDecorator(iItem fruit){
+        super(fruit);
+    }
 
-    public fruitDecorator(iFruit fruit){
-        this.decoratedFruit = fruit;
+    @Override
+    public Integer getPoints() {
+        return super.getPoints() + 1;
     }
 
 }

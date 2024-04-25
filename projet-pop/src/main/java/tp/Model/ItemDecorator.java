@@ -17,10 +17,5 @@ public class ItemDecorator implements iItem {
         return decoratedItem.getSpeed();
     }
 
-    @Override
-    public SpecialEffects setEffect() {
-        return SpecialEffects.EFFET1;
-    }
-
 
 }

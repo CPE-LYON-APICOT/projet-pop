@@ -2,7 +2,6 @@ package tp;
 
 import java.awt.Font;
 import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
 import javax.swing.*;
 
 import org.springframework.stereotype.Component;
@@ -43,7 +42,7 @@ public class Game {
 
         f.addKeyListener(snakeController);
         
-        System.out.println("hauteur : " + game.getHeight() + "largeur : " + game.getWidth());
+        // System.out.println("hauteur : " + game.getHeight() + "largeur : " + game.getWidth());
         while (!(snakeSingleton.getInstance().tailTouched() || game.snakeOutOfBounds())) {
             // game.getSnake().IncreaseSize();
             snakeController.moveSnake();

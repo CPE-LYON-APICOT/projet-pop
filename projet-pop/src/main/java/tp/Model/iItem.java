@@ -1,9 +1,7 @@
 package tp.Model;
 
-import tp.ATRIER.SpecialEffects;
-
 public interface iItem {
-
+    public Integer getPoints();
+    public Double getSpeed();
     public SpecialEffects setEffect();
-
 }

@@ -15,6 +15,7 @@ public class Grid {
     private Integer width;
     private Snake snake;
     private Integer[][] grid;
+    @SuppressWarnings("unused")
     private ObjetService objetService;
 
     public Integer getHeight() {
@@ -103,7 +104,7 @@ public class Grid {
 
     public void generateItem(List<Item> itemList) {
         for (int i = 0; i < itemList.size(); i++) {
-            this.grid[itemList.get(i).getX()][itemList.get(i).getY()] = 5;
+            this.grid[itemList.get(i).getY()][itemList.get(i).getX()] = 5;
         }
     }
 }

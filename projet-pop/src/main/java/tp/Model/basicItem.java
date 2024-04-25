@@ -1,9 +1,11 @@
 package tp.Model;
 
-import tp.ATRIER.SpecialEffects;
-
-class basicItem implements iItem{
+class basicItem extends Item{
     
+    public basicItem(Integer x, Integer y) {
+        super(x, y);
+    }
+
     @Override
     public SpecialEffects setEffect()
     {

@@ -1,8 +1,6 @@
 package tp.Model;
 
-import tp.ATRIER.SpecialEffects;
-
-class resetItemDecorator extends itemDecorator{
+class resetItemDecorator extends ItemDecorator{
     
     public resetItemDecorator(iItem item) {
         super(item);

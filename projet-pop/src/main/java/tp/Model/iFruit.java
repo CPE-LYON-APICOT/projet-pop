@@ -1,6 +1,7 @@
 package tp.Model;
 
-public interface iFruit {
+public interface iFruit extends iItem {
     
-    public Integer getPoints();    
+    public Integer getPoints();
+    
 }
