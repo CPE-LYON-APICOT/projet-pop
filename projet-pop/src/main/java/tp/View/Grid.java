@@ -103,6 +103,7 @@ public class Grid {
     }
 
     public void generateItem(List<Item> itemList) {
+        objetService.generateItemsList();
         for (int i = 0; i < itemList.size(); i++) {
             this.grid[itemList.get(i).getY()][itemList.get(i).getX()] = 5;
         }

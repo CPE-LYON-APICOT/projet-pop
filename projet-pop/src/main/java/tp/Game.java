@@ -53,7 +53,6 @@ public class Game {
             // game.displayGrid();
             
             l.setText("<html>" + game.getGrid() + "</html>");
-
             TimeUnit.MILLISECONDS.sleep(500);
         }
         System.out.println("fin partie");
