@@ -2,7 +2,7 @@ package tp.Decorators;
 
 import tp.Interfaces.iItem;
 
-class redFruitDecorator extends fruitDecorator{
+public class redFruitDecorator extends fruitDecorator{
 
     public redFruitDecorator(iItem fruit) {
         super(fruit);
@@ -10,7 +10,7 @@ class redFruitDecorator extends fruitDecorator{
 
     @Override
     public Integer getPoints(){
-        return decoratedItem.getPoints()+3000;
+        return decoratedItem.getPoints()+2500;
     }
 
     

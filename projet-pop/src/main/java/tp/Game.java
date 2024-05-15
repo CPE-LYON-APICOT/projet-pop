@@ -43,6 +43,8 @@ public class Game {
         f.addKeyListener(snakeController);
         
         // System.out.println("hauteur : " + grid.getHeight() + "largeur : " + grid.getWidth());
+        Integer defaultGameSpeed = 500;
+
         while (!(snakeSingleton.getInstance().tailTouched() || grid.snakeOutOfBounds())) {
             // grid.getSnake().IncreaseSize();
             snakeController.moveSnake();
@@ -52,7 +54,10 @@ public class Game {
             grid.generateItem(grid.getObjetService().getListItems());
             // grid.displayGrid();
             l.setText("<html>" + grid.getGrid() + "</html>");
-            TimeUnit.MILLISECONDS.sleep(500);
+            Integer newSpeed = (int) Math.floor(defaultGameSpeed/grid.getSnake().getSpeed());
+            
+            //System.out.println(grid.getObjetService().getListItems());
+            TimeUnit.MILLISECONDS.sleep(newSpeed);
         }
         System.out.println("fin partie");
     }

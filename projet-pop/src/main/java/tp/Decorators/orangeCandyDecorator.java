@@ -2,7 +2,7 @@ package tp.Decorators;
 
 import tp.Interfaces.iItem;
 
-class orangeCandyDecorator extends candyDecorator{
+public class orangeCandyDecorator extends candyDecorator{
 
     public orangeCandyDecorator(iItem candy) {
         super(candy);
@@ -10,7 +10,7 @@ class orangeCandyDecorator extends candyDecorator{
 
     @Override
     public Double getSpeed(){
-        return decoratedItem.getSpeed()+0.5;
+        return decoratedItem.getSpeed()+1;
     }
     
 }

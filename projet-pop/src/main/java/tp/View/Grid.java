@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 import org.springframework.stereotype.Component;
 
-import tp.Model.Item;
+import tp.Interfaces.iItem;
 import tp.Model.Snake;
 import tp.Services.ObjetService;
 import tp.Services.SnakeSingleton;
@@ -105,8 +105,8 @@ public class Grid {
 
     }
     
-    public void generateItem(List<Item> itemList) {
-        for (Item item : itemList) {
+    public void generateItem(List<iItem> itemList) {
+        for (iItem item : itemList) {
             this.grid[item.getY()][item.getX()] = 5;
         }
     }
