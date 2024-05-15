@@ -20,6 +20,8 @@ import tp.View.Grid;
 public class ObjetService {
     private ArrayList<Item> listItems;
 
+        
+
     public ObjetService(SnakeSingleton snakeSingleton) {
         Snake instance = snakeSingleton.getInstance();
         setListItems(new ArrayList<>());
@@ -53,6 +55,8 @@ public class ObjetService {
                     .filter(o -> o.getX().equals(sn.getX()) && o.getY().equals(sn.getY())).findAny();
             if (potentialItem.isPresent()) {
                 Item item = potentialItem.get();
+                getListItems().remove(potentialItem.get());
+                generateItemsList();
                 System.out.println("L'objet " + item.getClass().getName() + " a été ramassé");
                 if (item.getClass().getName() == "tp.Model.basicFruit") {
                     basicFruit fruit = (basicFruit) potentialItem.get();
@@ -60,7 +64,6 @@ public class ObjetService {
                     sn.IncreaseSize();
 
                     System.out.println(fruit.getPoints());
-                    
                 }
             }
         }
@@ -71,7 +74,6 @@ public class ObjetService {
 
         int random1 = random.nextInt(20);
         int random2 = random.nextInt(20);
-
         return new AbstractMap.SimpleEntry<>(random1, random2);
     }
 
@@ -81,5 +83,6 @@ public class ObjetService {
         Integer y = entry.getValue();
         getListItems().add(new basicFruit(x, y));
     }
+
 
 }

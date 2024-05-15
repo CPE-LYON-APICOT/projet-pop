@@ -14,13 +14,13 @@ import tp.View.Grid;
 @Component
 public class Game {
     private SnakeSingleton snakeSingleton;
-    private Grid game;
+    private Grid grid;
     private SnakeController snakeController;
 
-    public Game(SnakeSingleton snakeSingleton, Grid game, SnakeController snakeController) {
+    public Game(SnakeSingleton snakeSingleton, Grid grid, SnakeController snakeController) {
         
         this.snakeSingleton = snakeSingleton;
-        this.game = game;
+        this.grid = grid;
         this.snakeController = snakeController;
     }
 
@@ -42,17 +42,16 @@ public class Game {
 
         f.addKeyListener(snakeController);
         
-        // System.out.println("hauteur : " + game.getHeight() + "largeur : " + game.getWidth());
-        while (!(snakeSingleton.getInstance().tailTouched() || game.snakeOutOfBounds())) {
-            // game.getSnake().IncreaseSize();
+        // System.out.println("hauteur : " + grid.getHeight() + "largeur : " + grid.getWidth());
+        while (!(snakeSingleton.getInstance().tailTouched() || grid.snakeOutOfBounds())) {
+            // grid.getSnake().IncreaseSize();
             snakeController.moveSnake();
-            game.updateSnakePos();
-            game.getSnake().updateDirections(game.getSnake().getDirection());
-            // System.out.println(game.getSnake().getLastDirections());
-            
-            // game.displayGrid();
-            
-            l.setText("<html>" + game.getGrid() + "</html>");
+            grid.updateSnakePos();
+            grid.getSnake().updateDirections(grid.getSnake().getDirection());
+            // System.out.println(grid.getSnake().getLastDirections());
+            grid.generateItem(grid.getObjetService().getListItems());
+            // grid.displayGrid();
+            l.setText("<html>" + grid.getGrid() + "</html>");
             TimeUnit.MILLISECONDS.sleep(500);
         }
         System.out.println("fin partie");
