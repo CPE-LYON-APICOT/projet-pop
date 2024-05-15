@@ -9,6 +9,7 @@ import tp.Interfaces.iItem;
 import tp.Model.Snake;
 import tp.Services.ObjetService;
 import tp.Services.SnakeSingleton;
+
 @Component
 public class Grid {
     private Integer height;
@@ -21,13 +22,15 @@ public class Grid {
     public ObjetService getObjetService() {
         return objetService;
     }
+
     public Integer getHeight() {
         return height;
     }
+
     public Integer getWidth() {
         return width;
     }
-    
+
     public Grid(SnakeSingleton snakeSingleton, ObjetService objetService) {
         this.objetService = objetService;
         this.snake = snakeSingleton.getInstance();
@@ -37,7 +40,7 @@ public class Grid {
         initGrid();
         generateItem(objetService.getListItems());
     }
-    
+
     public void initGrid() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -45,7 +48,7 @@ public class Grid {
             }
         }
     }
-    
+
     public void displayGrid() {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -55,7 +58,7 @@ public class Grid {
         }
         System.out.println("");
     }
-    
+
     public String getGrid() {
         String res = "";
         for (int i = 0; i < grid.length; i++) {
@@ -67,11 +70,10 @@ public class Grid {
         res += "<br>";
         return res;
     }
-    
+
     public Snake getSnake() {
         return snake;
     }
-    
 
     public boolean snakeOutOfBounds() {
         if (snake.getX() >= width || snake.getX() < 0 || snake.getY() >= height || snake.getY() < 0) {
@@ -84,14 +86,13 @@ public class Grid {
         if (!(snakeOutOfBounds())) {
             Integer snakeX = this.snake.getX();
             Integer snakeY = this.snake.getY();
-            
-            
-            List<Entry<Integer,Integer>> last_positions = this.snake.getLastPositions();
+
+            List<Entry<Integer, Integer>> last_positions = this.snake.getLastPositions();
 
             if (last_positions.size() >= this.snake.getSize()) {
-                List<Entry<Integer,Integer>> positions = last_positions.reversed().subList(0, this.snake.getSize());
+                List<Entry<Integer, Integer>> positions = last_positions.reversed().subList(0, this.snake.getSize());
 
-                for (Entry<Integer,Integer> i : last_positions) {
+                for (Entry<Integer, Integer> i : last_positions) {
                     if (positions.contains(i)) {
                         this.grid[i.getValue()][i.getKey()] = 1;
                     } else {
@@ -104,10 +105,59 @@ public class Grid {
         }
 
     }
-    
+
     public void generateItem(List<iItem> itemList) {
-        for (iItem item : itemList) {
-            this.grid[item.getY()][item.getX()] = 5;
+
+        switch (itemList.get(0).getClass().getName()) {
+
+            case "tp.Model.basicFruit":
+                for (iItem item : itemList) {
+                    this.grid[item.getY()][item.getX()] = 1;
+                }
+                break;
+
+            case "tp.Model.basicCandy":
+                for (iItem item : itemList) {
+                    this.grid[item.getY()][item.getX()] = 2;
+                }
+                break;
+
+            case "tp.Decorators.greenFruitDecorator":
+                for (iItem item : itemList) {
+                    this.grid[item.getY()][item.getX()] = 3;
+                }
+                break;
+
+            case "tp.Decorators.greenCandyDecorator":
+                for (iItem item : itemList) {
+                    this.grid[item.getY()][item.getX()] = 4;
+                }
+                break;
+
+            case "tp.Decorators.orangeFruitDecorator":
+                for (iItem item : itemList) {
+                    this.grid[item.getY()][item.getX()] = 5;
+                }
+                break;
+
+            case "tp.Decorators.orangeCandyDecorator":
+                for (iItem item : itemList) {
+                    this.grid[item.getY()][item.getX()] = 6;
+                }
+                break;
+
+            case "tp.Decorators.redFruitDecorator":
+                for (iItem item : itemList) {
+                    this.grid[item.getY()][item.getX()] = 7;
+                }
+                break;
+            case "tp.Decorators.redCandyDecorator":
+                for (iItem item : itemList) {
+                    this.grid[item.getY()][item.getX()] = 8;
+                }
+                break;
+
         }
+
     }
 }
