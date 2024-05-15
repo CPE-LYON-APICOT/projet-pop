@@ -6,7 +6,7 @@ public class ItemDecorator implements iItem {
     public ItemDecorator(iItem item){
         this.decoratedItem = item;
     }
-
+    
     @Override
     public Integer getPoints() {
         return decoratedItem.getPoints();
