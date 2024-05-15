@@ -2,6 +2,8 @@ package tp.Model;
 import java.util.AbstractMap;
 import java.util.Map.Entry;
 
+import tp.Interfaces.iItem;
+
 public abstract class Item implements iItem {
 
     protected Integer x;

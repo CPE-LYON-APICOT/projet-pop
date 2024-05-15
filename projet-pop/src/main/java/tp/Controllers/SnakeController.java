@@ -6,9 +6,9 @@ import java.util.Map.Entry;
 
 import org.springframework.stereotype.Component;
 
-import tp.ATRIER.Direction;
 import tp.Services.SnakeSingleton;
 import tp.View.Grid;
+import tp.enums.Direction;
 @Component
 public class SnakeController implements KeyListener {
     private tp.Model.Snake snake;

@@ -1,4 +1,4 @@
-package tp.Model;
+package tp.Interfaces;
 import java.util.logging.Level;
 
 /* import java.util.Map.Entry;

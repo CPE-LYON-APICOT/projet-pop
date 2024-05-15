@@ -1,6 +1,6 @@
 package tp.Model;
 
-import tp.ATRIER.SpecialEffects;
+import tp.enums.SpecialEffects;
 
 public abstract class EffectItem extends Item {
 

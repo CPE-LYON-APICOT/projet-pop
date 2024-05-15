@@ -9,11 +9,10 @@ import org.springframework.stereotype.Component;
 
 import tp.Model.basicCandy;
 import tp.Model.basicFruit;
-import tp.Model.greenFruitDecorator;
+import tp.Decorators.greenFruitDecorator;
 import tp.Model.Item;
 import tp.Model.Snake;
 import tp.Model.Wall;
-import tp.Model.iFruit;
 
 @Component
 public class ObjetService {

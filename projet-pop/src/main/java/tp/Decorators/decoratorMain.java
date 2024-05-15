@@ -1,4 +1,9 @@
-package tp.Model;
+package tp.Decorators;
+
+import tp.Interfaces.iItem;
+import tp.Model.basicCandy;
+import tp.Model.basicFruit;
+
 public class decoratorMain {
     public static void main(String[] args) {
         // Create a new basic fruit
