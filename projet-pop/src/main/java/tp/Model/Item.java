@@ -45,10 +45,10 @@ public abstract class Item implements iItem {
         return 1.0;
     }
 
-    @Override
-    public SpecialEffects setEffect() {
-        return SpecialEffects.EFFET1;
-    }
+    // @Override
+    // public SpecialEffects setEffect() {
+    //     return SpecialEffects.EFFET1;
+    // }
 
     public Entry<Integer, Integer> getPosition() {
         Entry<Integer, Integer> coordonneesItem = new AbstractMap.SimpleEntry<>(getX(), getY());

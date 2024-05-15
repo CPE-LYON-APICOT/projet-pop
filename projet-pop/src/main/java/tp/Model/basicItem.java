@@ -6,10 +6,10 @@ class basicItem extends Item{
         super(x, y);
     }
 
-    @Override
-    public SpecialEffects setEffect()
-    {
-        return null ;
-    }
+    // @Override
+    // public SpecialEffects setEffect()
+    // {
+    //     return null ;
+    // }
     
 }
