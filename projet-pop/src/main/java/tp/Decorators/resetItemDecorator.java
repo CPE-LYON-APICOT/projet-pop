@@ -1,7 +1,7 @@
 package tp.Decorators;
 
 import tp.Interfaces.iItem;
-import tp.Model.SpecialEffects;
+// import tp.Model.SpecialEffects;
 
 class resetItemDecorator extends ItemDecorator{
     
