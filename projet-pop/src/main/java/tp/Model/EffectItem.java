@@ -1,5 +1,7 @@
 package tp.Model;
 
+import tp.enums.SpecialEffects;
+
 public abstract class EffectItem extends Item {
 
     public EffectItem(Integer x, Integer y) {

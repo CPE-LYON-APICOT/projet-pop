@@ -1,4 +1,7 @@
-package tp.Model;
+package tp.Decorators;
+
+import tp.Interfaces.iItem;
+
 public class greenFruitDecorator extends fruitDecorator{
 
     public greenFruitDecorator(iItem item) {
