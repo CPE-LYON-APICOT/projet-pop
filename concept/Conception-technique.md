@@ -1,8 +1,8 @@
 
 # Retro-conception
 
-**Binome 1 : [Nom Prénom]**
-**Binome 2 : [Nom Prénom]**
+**Binome 1 : [PERRAT Tom]**
+**Binome 2 : [BELALOUI Jamy]**
 
 Complétez ce document pour décrire votre projet, les difficultés rencontrées, les design patterns mis en oeuvre, les améliorations possibles, et en quoi la POO vous a été utile.
 
@@ -28,7 +28,7 @@ Dans ces documents, il ne s'agit pas de cacher la poussière sous le tapis, il f
 
 ## Objectif du projet
 
-[Décrivez ici l'objectif initial du projet, ne cherchez pas à le minorer si vous n'avez pas tout fini, décrivez ce que vous avez voulu faire]
+L'objectif initial de notre projet était de réaliser une nouvelle version du jeu Snake, proposant en plus des pommes(ou autre fruit), des bonbons faisant varier la vitesse du serpent et des objets à effets (Destruction de mur, vie supplémentaires, etc.). Nous avions aussi pour but de proposer des modes de jeux différents avec chacun une particularité. Par exemple, un mode donjon avec des ennemis et différents étages de plus en plus difficiles à atteindre, un mode avec plusieurs serpents contrôlés simultanément, ou encore avec de nouveaux obstacles
 
 ## Résultat
 
