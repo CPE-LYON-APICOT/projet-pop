@@ -10,4 +10,10 @@ public class basicCandy extends Item {
     public Double getSpeed() {
         return 1.0;
     }    
+
+    @Override
+    public Integer getPoints() {
+        return 50;
+    }
+    
 }

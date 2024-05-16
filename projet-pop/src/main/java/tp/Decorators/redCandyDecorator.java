@@ -12,4 +12,9 @@ public class redCandyDecorator extends candyDecorator{
     public Double getSpeed(){
         return decoratedItem.getSpeed()+1.5;
     }
+    @Override
+    public Integer getPoints() {
+        return 1250;
+    }
+    
 }

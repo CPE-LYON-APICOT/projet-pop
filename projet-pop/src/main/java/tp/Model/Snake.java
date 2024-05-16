@@ -18,6 +18,7 @@ public class Snake extends Observable {
     private List<Entry<Integer, Integer>> last_positions;
     private List<Direction> last_directions;
     private double speed;
+    private double points;
 
    
     public Snake(Integer x, Integer y) {
@@ -29,6 +30,7 @@ public class Snake extends Observable {
         last_positions.add(startPos);
         last_directions.add(this.direction);
         this.speed = 1;
+        this.points=0;
         // for (int i = 0; i < this.size; i++) {
         // }
     }
@@ -72,6 +74,14 @@ public class Snake extends Observable {
 
     public double getSpeed(){
         return this.speed;
+    }
+    public void setPoints(double points)
+    {
+        this.points += points;
+    }
+
+    public double getPoints(){
+        return this.points;
     }
 
     public boolean oppositeDirection(Direction direction) {

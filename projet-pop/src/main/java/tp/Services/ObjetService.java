@@ -3,11 +3,10 @@ package tp.Services;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Random;
 
-import javax.swing.RowFilter.Entry;
 
 import org.springframework.stereotype.Component;
 
@@ -77,6 +76,7 @@ public class ObjetService {
                 // System.out.println(iItem.getPoints());
                 // System.out.println(iItem.getSpeed());
                 // System.out.println("VITESSE DU SSSSSERPENTARD : "+instance.getSpeed());
+                this.instance.setPoints(iItem.getPoints()*this.instance.getSpeed());
                 if(iItem.getSpeed()!=0)
                 {
                     this.instance.setSpeed(iItem.getSpeed());
@@ -100,7 +100,7 @@ public class ObjetService {
 
     }
 
-    public Map.Entry<Integer, Integer> randomPositionGenerator() {
+    public Entry<Integer, Integer> randomPositionGenerator() {
         Random random = new Random();
 
         int random1 = random.nextInt(20);
@@ -109,7 +109,7 @@ public class ObjetService {
     }
 
     public void generateItemsList(int randomItemType, int randomItemColor) {
-        Map.Entry<Integer, Integer> entry = randomPositionGenerator();
+        Entry<Integer, Integer> entry = randomPositionGenerator();
         Integer x = entry.getKey();
         Integer y = entry.getValue();
         if (randomItemType == 0) {
@@ -154,6 +154,7 @@ public class ObjetService {
         }
         System.out.println(getListItems());
     }
+
     /*
      * public int[] setGridSize(int height, int width)
      * {

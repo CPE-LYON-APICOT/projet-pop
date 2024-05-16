@@ -16,7 +16,6 @@ public class Grid {
     private Integer width;
     private Snake snake;
     private Integer[][] grid;
-    @SuppressWarnings("unused")
     private ObjetService objetService;
 
     public ObjetService getObjetService() {

@@ -31,12 +31,17 @@ public class Game {
         JFrame f = new JFrame("label");
         JLabel l = new JLabel();
         JPanel p = new JPanel();
+        JLabel score = new JLabel("score : ");
 
         l.setFont(new Font("Monospaced", Font.PLAIN, 20));
 
-        p.add(l);
+        score = new JLabel("score : "+grid.getSnake().getPoints());
+        score.setFont(new Font("Monospaced", Font.PLAIN, 10));
         
+        p.add(l);
+        p.add(score);
         f.add(p);
+        
         f.setSize(1000, 700);
         f.setVisible(true);
 
@@ -55,9 +60,11 @@ public class Game {
             // grid.displayGrid();
             l.setText("<html>" + grid.getGrid() + "</html>");
             Integer newSpeed = (int) Math.floor(defaultGameSpeed/grid.getSnake().getSpeed());
-            
+            score.setText("score : "+grid.getSnake().getPoints());
+
             //System.out.println(grid.getObjetService().getListItems());
             TimeUnit.MILLISECONDS.sleep(newSpeed);
+            
         }
         System.out.println("fin partie");
     }
