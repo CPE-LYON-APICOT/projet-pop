@@ -2,12 +2,12 @@ package tp.Services;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Random;
-
 
 import org.springframework.stereotype.Component;
 
@@ -26,6 +26,8 @@ public class ObjetService {
     private Snake instance;
     private int grid_width;
     private int grid_height;
+    private List<String> listCandyTypes;
+    private List<String> listFruitTypes;
 
     public int getGrid_height() {
         return grid_height;
@@ -33,7 +35,7 @@ public class ObjetService {
 
     public int getGrid_width() {
         return grid_width;
-    } 
+    }
 
     public ObjetService(SnakeSingleton snakeSingleton) {
         this.instance = snakeSingleton.getInstance();
@@ -44,6 +46,10 @@ public class ObjetService {
 
         instance.addObserver((e, f) -> DetectIfSnakeAteItem(e, f));
 
+        this.listCandyTypes = Arrays.asList("tp.Model.basicCandy", "tp.Decorators.greenCandyDecorator",
+        "tp.Decorators.orangeCandyDecorator", "tp.Decorators.redCandyDecorator");
+        this.listFruitTypes = Arrays.asList("tp.Model.basicFruit", "tp.Decorators.greenFruitDecorator",
+        "tp.Decorators.orangeFruitDecorator", "tp.Decorators.redFruitDecorator");
         /*
          * 
          * instance.AddObserver()
@@ -80,7 +86,7 @@ public class ObjetService {
                 int randomItemColor = random.nextInt(4);
 
                 generateItemsList(randomItemType, randomItemColor);
-                
+
                 System.out.println("L'objet " + item.getClass().getName() + " a été ramassé");
                 System.out.println(getListItems());
                 // switch (item.getClass().getName()) {
@@ -89,13 +95,11 @@ public class ObjetService {
                 // System.out.println(iItem.getPoints());
                 // System.out.println(iItem.getSpeed());
                 // System.out.println("VITESSE DU SSSSSERPENTARD : "+instance.getSpeed());
-                this.instance.setPoints(iItem.getPoints()*this.instance.getSpeed());
-                if(iItem.getSpeed()!=0)
-                {
+                this.instance.setPoints(iItem.getPoints() * this.instance.getSpeed());
+                if (iItem.getSpeed() != 0) {
                     this.instance.setSpeed(iItem.getSpeed());
                 }
-                
-                
+
                 // break;
 
                 /*
@@ -113,11 +117,11 @@ public class ObjetService {
     }
 
     private List<Entry<Integer, Integer>> wholeGrid() {
-        List<Entry<Integer, Integer>> res = new  ArrayList<>();
+        List<Entry<Integer, Integer>> res = new ArrayList<>();
         // res.add(new AbstractMap.SimpleEntry<>(null, null));
         for (int i = 0; i < this.grid_width; i++) {
             for (int j = 0; j < this.grid_height; j++) {
-                res.add(new AbstractMap.SimpleEntry<>(i,j));
+                res.add(new AbstractMap.SimpleEntry<>(i, j));
             }
         }
         return res;
@@ -125,21 +129,21 @@ public class ObjetService {
 
     public Entry<Integer, Integer> randomPositionGenerator() {
         Random random = new Random();
-        List<Entry<Integer, Integer>> snake_pos =  this.instance.getCurrentPosition();
+        List<Entry<Integer, Integer>> snake_pos = this.instance.getCurrentPosition();
 
         List<Entry<Integer, Integer>> grid = wholeGrid();
-        for (Entry<Integer,Integer> i : snake_pos) {
+        for (Entry<Integer, Integer> i : snake_pos) {
             grid.remove(i);
         }
 
-        // Integer random1 = random.nextInt(grid_width);  
+        // Integer random1 = random.nextInt(grid_width);
         // Integer random2 = random.nextInt(grid_height);
 
-        Entry<Integer,Integer> ran_pos = new AbstractMap.SimpleEntry<>(grid.get(random.nextInt(grid.size())));
+        Entry<Integer, Integer> ran_pos = new AbstractMap.SimpleEntry<>(grid.get(random.nextInt(grid.size())));
 
         // while (snake_pos.contains(ran_pos)) {
-        //     random1 = random.nextInt(grid_width);
-        //     random2 = random.nextInt(grid_height);
+        // random1 = random.nextInt(grid_width);
+        // random2 = random.nextInt(grid_height);
         // }
         return ran_pos;
     }
