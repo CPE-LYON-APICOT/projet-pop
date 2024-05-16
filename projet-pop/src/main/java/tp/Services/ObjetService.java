@@ -62,7 +62,7 @@ public class ObjetService {
                     basicFruit fruit = (basicFruit) potentialItem.get();
                     System.out.println("nom");
                     sn.IncreaseSize();
-
+                    
                     System.out.println(fruit.getPoints());
                 }
             }

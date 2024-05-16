@@ -35,7 +35,7 @@ public class Game {
         l.setFont(new Font("Monospaced", Font.PLAIN, 20));
 
         p.add(l);
- 
+        
         f.add(p);
         f.setSize(1000, 700);
         f.setVisible(true);
