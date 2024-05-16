@@ -8,6 +8,6 @@ public class basicCandy extends Item {
     
     @Override
     public Double getSpeed() {
-        return 1.5;
+        return 1.0;
     }    
 }

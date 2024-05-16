@@ -10,7 +10,7 @@ public class greenFruitDecorator extends fruitDecorator{
 
     @Override
     public Integer getPoints(){
-        return decoratedItem.getPoints()+1000;
+        return decoratedItem.getPoints()+500;
     }
 
     

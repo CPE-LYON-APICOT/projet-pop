@@ -1,7 +1,19 @@
 package tp.Interfaces;
 
+import java.util.Map.Entry;
+
 public interface iItem {
-    public Integer getPoints();
-    public Double getSpeed();
-    // public SpecialEffects setEffect();
+    Integer getY();
+
+    void setY(Integer y);
+
+    Integer getX();
+
+    void setX(Integer x);
+
+    Integer getPoints();
+
+    Double getSpeed();
+
+    Entry<Integer, Integer> getPosition();
 }

@@ -15,21 +15,25 @@ public abstract class Item implements iItem {
         this.setY(y);
     }
 
+    @Override
     public Integer getY() {
         return y;
 
     }
 
+    @Override
     public void setY(Integer y) {
         this.y = y;
 
     }
 
+    @Override
     public Integer getX() {
         return x;
 
     }
 
+    @Override
     public void setX(Integer x) {
         this.x = x;
 
@@ -42,7 +46,7 @@ public abstract class Item implements iItem {
 
     @Override
     public Double getSpeed() {
-        return 1.0;
+        return 0.0;
     }
 
     // @Override
@@ -50,6 +54,7 @@ public abstract class Item implements iItem {
     //     return SpecialEffects.EFFET1;
     // }
 
+    @Override
     public Entry<Integer, Integer> getPosition() {
         Entry<Integer, Integer> coordonneesItem = new AbstractMap.SimpleEntry<>(getX(), getY());
         return coordonneesItem;

@@ -7,7 +7,7 @@ public class basicFruit extends Item {
 
     @Override
     public Integer getPoints() {
-        return 1;
+        return 100;
     }
     
 }
