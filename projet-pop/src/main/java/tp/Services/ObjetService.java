@@ -37,8 +37,8 @@ public class ObjetService {
 
     public ObjetService(SnakeSingleton snakeSingleton) {
         this.instance = snakeSingleton.getInstance();
-        this.grid_width = 2;
-        this.grid_height = 3;
+        this.grid_width = 5;
+        this.grid_height = 5;
         setListItems(new ArrayList<>());
         generateItemsList(0, 0);
 

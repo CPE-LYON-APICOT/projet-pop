@@ -1,5 +1,7 @@
 package tp.View;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -60,9 +62,10 @@ public class Grid {
 
     public String getGrid() {
         String res = "";
+        List<String> colors = Arrays.asList("black", "green", "", "", "", "", "", "", "", "");
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                res += grid[i][j] + " ";
+                res += "<font color='" + colors.get(grid[i][j]) + "'>" + grid[i][j] + "</font> ";
             }
             res += "<br>";
         }
@@ -111,48 +114,48 @@ public class Grid {
 
             case "tp.Model.basicFruit":
                 for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 1;
+                    this.grid[item.getY()][item.getX()] = 2;
                 }
                 break;
 
             case "tp.Model.basicCandy":
                 for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 2;
+                    this.grid[item.getY()][item.getX()] = 3;
                 }
                 break;
 
             case "tp.Decorators.greenFruitDecorator":
                 for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 3;
+                    this.grid[item.getY()][item.getX()] = 4;
                 }
                 break;
 
             case "tp.Decorators.greenCandyDecorator":
                 for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 4;
+                    this.grid[item.getY()][item.getX()] = 5;
                 }
                 break;
 
             case "tp.Decorators.orangeFruitDecorator":
                 for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 5;
+                    this.grid[item.getY()][item.getX()] = 6;
                 }
                 break;
 
             case "tp.Decorators.orangeCandyDecorator":
                 for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 6;
+                    this.grid[item.getY()][item.getX()] = 7;
                 }
                 break;
 
             case "tp.Decorators.redFruitDecorator":
                 for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 7;
+                    this.grid[item.getY()][item.getX()] = 8;
                 }
                 break;
             case "tp.Decorators.redCandyDecorator":
                 for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 8;
+                    this.grid[item.getY()][item.getX()] = 9;
                 }
                 break;
 
