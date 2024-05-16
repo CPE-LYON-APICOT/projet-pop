@@ -48,7 +48,7 @@ public class Game {
         f.addKeyListener(snakeController);
         
         // System.out.println("hauteur : " + grid.getHeight() + "largeur : " + grid.getWidth());
-        Integer defaultGameSpeed = 1500;
+        Integer defaultGameSpeed = 500;
 
         while (!(snakeSingleton.getInstance().tailTouched() || grid.snakeOutOfBounds() /*|| grid.getSnake().getSize() == grid.getHeight() * grid.getWidth()*/)) {
             // grid.getSnake().IncreaseSize();

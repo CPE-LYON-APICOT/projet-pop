@@ -39,17 +39,17 @@ public class ObjetService {
 
     public ObjetService(SnakeSingleton snakeSingleton) {
         this.instance = snakeSingleton.getInstance();
-        this.grid_width = 2;
-        this.grid_height = 3;
+        this.grid_width = 10;
+        this.grid_height = 10;
         setListItems(new ArrayList<>());
         generateItemsList(0, 0);
-
+        generateItemsList(1, 0);
         instance.addObserver((e, f) -> DetectIfSnakeAteItem(e, f));
 
         this.listCandyTypes = Arrays.asList("tp.Model.basicCandy", "tp.Decorators.greenCandyDecorator",
-        "tp.Decorators.orangeCandyDecorator", "tp.Decorators.redCandyDecorator");
+                "tp.Decorators.orangeCandyDecorator", "tp.Decorators.redCandyDecorator");
         this.listFruitTypes = Arrays.asList("tp.Model.basicFruit", "tp.Decorators.greenFruitDecorator",
-        "tp.Decorators.orangeFruitDecorator", "tp.Decorators.redFruitDecorator");
+                "tp.Decorators.orangeFruitDecorator", "tp.Decorators.redFruitDecorator");
         /*
          * 
          * instance.AddObserver()
@@ -82,7 +82,17 @@ public class ObjetService {
                 // sera ajouté dans la grille
 
                 Random random = new Random();
-                int randomItemType = random.nextInt(2);
+                
+                int randomItemType;
+                
+                if(listCandyTypes.contains(item.getClass().getName()))
+                {
+                    randomItemType=0;
+                }
+                else /*if(listFruitTypes.contains(item.getClass().getName()))*/{
+                    randomItemType=1;
+                }
+
                 int randomItemColor = random.nextInt(4);
 
                 generateItemsList(randomItemType, randomItemColor);
