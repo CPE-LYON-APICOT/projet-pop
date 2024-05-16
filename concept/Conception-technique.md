@@ -45,7 +45,7 @@ Mécanismes de la partie : Au début de la partie, le serpent apparait dans la g
 
 ### Améliorations possibles
 
-La partie gameplay permettant de jouer une partie entièrement, nous aurions souhaité amélioré la partie visuelle du jeu puis ajouter des murs ou autres éléments sur la grille afin de stimuler davantage le joueur. L'ajout d'objets à effets spéciaux serait le point suivant sur lequel nous aurions travaillé dans le but de diversifier le gameplay.
+La partie gameplay permettant de jouer une partie entièrement, nous aurions souhaité amélioré la partie visuelle du jeu puis ajouter des murs ou autres éléments sur la grille afin d'améliorer l'expérience de jeu. L'ajout d'objets à effets spéciaux serait le point suivant sur lequel nous aurions travaillé dans le but de diversifier le gameplay.
 Puis dans un futur un peu plus lointain, nous aurions souhaité développer d'autres modes de jeu 
 
 ---
@@ -58,54 +58,180 @@ Puis dans un futur un peu plus lointain, nous aurions souhaité développer d'au
 
 ### Faiblesses du code
 
-Les bonbons et les fruits ont le même type, ils partagent donc les mêmes attributs (points et speed), ce qui entrainait des comportements non souhaités (voir Difficulté rencontrée n°1)
-Impossibilité d'ajouter un nouvel objet sans ajouter sa couleur 
+La taille de la grille est définie dans le service de gestion des objets(voir difficulté rencontrée 3).
+
+L'affichage est simple mais peu modulable, si on rajoute un item, son numéro plus grand décalera l'affichage, et il faut rajouter une couleur à l'objet sous peine que le programme crash car sinon il essaie d'accéder à un index en dehors du tableau pour trouver la couleur.
 
 ### Difficultés rencontrées
 
 #### 1. [Gestion des attributs des bonbons et des fruits]
 
-Après que le serpent ait collecté un bonbon, sa vitesse changeait en fonction du bonbon collecté (comme prévu), mais la collecte d'un fruit réinitialisait cette vitesse car les objets de type iItem auquel appartiennent les fruits et les bonbons ont un attribut vitesse qui est initialisé à 1.
-Le vitesse du serpent était donc égale à la vitesse du jeu de base / 1.
+Après que le serpent ait collecté un bonbon, sa vitesse changeait en fonction du bonbon collecté (comme prévu), mais la collecte d'un fruit réinitialisait cette vitesse car les objets de type iItem auquel appartiennent les fruits et les bonbons ont un attribut vitesse qui est initialisé à 0. Le décorateur ajoutait donc 0 à la vitesse de base du serpent (1)
+Le vitesse du serpent était donc égale à la vitesse du jeu de base / la vitesse du serpent de base.
+Nous avons fais en sorte de vérifier la vitesse de l'Item puis on ne l'applique à la vitesse du serpent que si sa valeur est différente de 0.
 
 #### 2. [L'implémentation des design patterns]
 
-Nous avons mis du temps à comprendre le fonctionnement des design pattern, mais l'implémentation de ces derniers dans le contexte du jeu Snake n'a pas été simple, mais après beaucoup de communication et d'entraide, nous avons surmonté cette difficulté
+Nous avons mis du temps à comprendre le fonctionnement des design pattern, l'implémentation de ces derniers dans le contexte de notre jeu n'a pas été simple, la plupart n'ayant pas de réelle utilité pour Snake mais avec du temps et des recherches ainsi que de l'aide de notre professeur, nous avons finalement réussi à en mettre en place certains dans notre code.
 
+#### 3. [Impossibilité d'accéder à la classe Grid depuis la classe ObjetService]
+
+La taille de la grille de jeu se trouve dans ObjetService car on peut accéder à cette classe depuis la classe Grid (qui contient la grille de jeu) mais on ne peut pas accéder à ObjetService depuis Grid car nous ne maîtrisons pas suffisamment l'injection de dépendances. Nous n'avons pas réussi à résoudre le problème.
 
 ### *Design Patterns* mis en oeuvre
 
 #### 1. [Décorateurs]
 Nous avons utilisés des décorateurs afin d'appliquer différentes quantités de points aux fruits et différentes vitesses aux différents bonbons dépendamment de leur couleur
 
-[Ajouter éventuellement des exemples de code pour montrer l'élégence de votre solution, pour cela vous pouvez écrire en Markdown votre code ainsi :
+Nos décorateurs utilisent une interface iItem qui est implémentée par la classe abstraite Item, elle contient les fonctions qui permettent de récupérer les coordonnées d'un objet, les points et la vitesse qu'il octroie. Pour les fruits et les bonbons, on crée respectivement un objet basique (basicCandy et basicFruit) sur lesquels nous appliquons nos décorateurs. Actuellement, nous avons trois décorateurs pour les fruits et trois pour les couleurs (chaque couleur correspond à un nombre de points différent pour les fruits et à une vitesse différente pour les bonbons)
+
+<pre>
+
+```java
+
+
+
+public interface iItem {
+    Integer getY();
+
+    void setY(Integer y);
+
+    Integer getX();
+
+    void setX(Integer x);
+
+    Integer getPoints();
+
+    Double getSpeed();
+
+    Entry<Integer, Integer> getPosition();
+}
+
+public class ItemDecorator implements iItem {
+    protected iItem decoratedItem;
+
+    public ItemDecorator(iItem item){
+        this.decoratedItem = item;
+    }
+
+    @Override
+    public Integer getPoints() {
+        return decoratedItem.getPoints();
+    }
+
+    @Override
+    public Double getSpeed() {
+        return decoratedItem.getSpeed();
+    }
+
+    @Override
+    public Integer getY()
+    {
+        return decoratedItem.getY();
+    }
+
+    @Override
+    public void setY(Integer y){
+        decoratedItem.setY(y);
+    }
+
+
+    public Integer getX()
+    {
+        return decoratedItem.getX();
+    }
+
+    public void setX(Integer x){
+        decoratedItem.setX(x);
+    }
+
+    public Entry<Integer, Integer> getPosition()
+    {
+        return decoratedItem.getPosition();
+    }
+
+}
+
+class fruitDecorator extends ItemDecorator {
+
+    public fruitDecorator(iItem fruit){
+        super(fruit);
+    }
+
+    @Override
+    public Integer getPoints() {
+        return super.getPoints() + 1;
+    }
+
+}
+
+public class greenFruitDecorator extends fruitDecorator{
+
+    public greenFruitDecorator(iItem item) {
+        super(item);
+    }
+
+    @Override
+    public Integer getPoints(){
+        return decoratedItem.getPoints()+500;
+    }
+
+    
+}
+
+```
+</pre>
+
+#### 2. [Observer]
+
 
 <pre>
 ```java
-public class Factory {
-    public static Object createObject(String type) {
-        if (type.equals("type1")) {
-            return new Type1();
-        } else if (type.equals("type2")) {
-            return new Type2();
-        }
-        return null;
-    }
-}
+
 ```
 </pre>
 
 ]
 
 ---
+
+#### 3. [Singleton]
+
+Nous avons utilisés des le design pattern singleton afin de s'assurer qu'il n'y a qu'une seule instance de la classe Snake en fournissant un point d'accès global à cette instance.
+
+<pre>
+```java
+
+import tp.Model.Snake;
+@Component
+public class SnakeSingleton {
+
+    private static Snake instance;
+
+    public SnakeSingleton(){
+        SnakeSingleton.instance = new Snake(0,0);
+    }
+    public Snake getInstance(){
+        return instance;
+    }
+}
+
+```
+</pre>
+
+---
+
+
 # Partie pédagogique
 
 
 ### En quoi la POO vous a été utile
 
-[Par exemple, expliquez que vous auriez éprouvé des difficultés à gérer les collisions si vous n'aviez pas utilisé la POO, ou que vous avez pu facilement ajouter des fonctionnalités à votre jeu grâce à la POO
-Minimum 10 lignes (personnalisé en fonction de votre projet)]
+L'utilisation de la POO nous a permis de gérer facilement les différents objets ainsi que la gestion de la visibilité de certaines classes vis-à-vis d'autres. Cela a facilité la création des fruits et des bonbons en leurs passant comme attribut une position x et une position y, nous n'avons donc pas eu à les faire à la main. La programmation orientée objet permet d'effectuer de l'héritage, entrainant un principe d'encapsulation qui nous a donné la possibilité de mettre en place certains design pattern comme le pattern singleton et les décorateurs. 
+La POO nous permet si nécessaire de réutiliser une classe dans plusieurs parties du projet et contribue à la modulabilité du projet
+Nous avons pu utiliser des classes abstraites telles que Item qui contient les fonctions que nous utilisons pour la position des items.
+Concernant le serpent, il aurait été très complexe de conserver ses données. Que ce soit au niveau de la liste des cases sur lesquelles il est et qui changent constamment, au niveau de la gestion de sa vitesse ou de son changement de direction. Le fait de pouvoir stocker toutes ces données dans un objet Snake permet l'utilisation et la modification de ces données de manière efficaces et plus simple que sans l'utilisation de la POO
 
 ### Conclusion
 
-[Décrivez ici si vous avez compris un concept particulier que vous n'aviez pas compris en cours, inversement si vous pensiez qu'il était possible de faire qqchose mais que cela ne s'est pas passé comme prévu]
+Les designs pattern présentés en cours avaient besoin d'être mis en application afin d'en comprendre l'utilisation dans un contexte, ce projet a été l'occasion de les travailler et d'intégrer ces nouveaux concepts.
