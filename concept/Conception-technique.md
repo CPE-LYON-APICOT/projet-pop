@@ -28,15 +28,25 @@ Dans ces documents, il ne s'agit pas de cacher la poussière sous le tapis, il f
 
 ## Objectif du projet
 
-L'objectif initial de notre projet était de réaliser une nouvelle version du jeu Snake, proposant en plus des pommes(ou autre fruit), des bonbons faisant varier la vitesse du serpent et des objets à effets (Destruction de mur, vie supplémentaires, etc.). Nous avions aussi pour but de proposer des modes de jeux différents avec chacun une particularité. Par exemple, un mode donjon avec des ennemis et différents étages de plus en plus difficiles à atteindre, un mode avec plusieurs serpents contrôlés simultanément, ou encore avec de nouveaux obstacles
+L'objectif initial de notre projet était de réaliser une nouvelle version du jeu Snake, proposant en plus des pommes(ou autre fruit), des bonbons faisant varier la vitesse du serpent et des objets à effets (Destruction de mur, vie supplémentaires, etc.). Nous avions aussi pour but de proposer des modes de jeux différents avec chacun une particularité. Par exemple, un mode donjon avec des ennemis et différents étages de plus en plus difficiles à atteindre, un mode avec plusieurs serpents contrôlés simultanément, ou encore avec de nouveaux obstacles.
 
 ## Résultat
 
-[Avez vous atteint votre objectif ?]
+Notre objectif a été partiellement atteint, nous avons un code fonctionnel qui permet de jouer une partie avec des fruits octroyant différentes quantités de points au joueur dépendamment de la couleur de l'objet collecté et de la vitesse du serpent, le score est affiché.
+
+ La partie est perdue si une des conditions suivantes est remplie :
+ 
+- Le serpent touche un mur
+- Le serpent touche sa queue
+
+La partie est considérée comme gagnée si toutes les cases de la grilles sont occupées par le serpent
+
+Mécanismes de la partie : Au début de la partie, le serpent apparait dans la grille de jeu, ainsi qu'un fruit et un bonbon, lorsque le joueur collecte un fruit, un autre fruit d'une couleur aléatoire apparait (même chose pour les bonbons), la couleur fera varier le nombre de points octroyé par les bonbons et les fruits et la vitesse du serpent dépend du dernier bonbon mangé. Plus la vitesse du serpent est élevée, plus le multiplicateur de score est élevé.
 
 ### Améliorations possibles
 
-[Décrivez ici les améliorations que vous auriez pu apporter si vous aviez eu plus de temps]
+La partie gameplay permettant de jouer une partie entièrement, nous aurions souhaité amélioré la partie visuelle du jeu puis ajouter des murs ou autres éléments sur la grille afin de stimuler davantage le joueur. L'ajout d'objets à effets spéciaux serait le point suivant sur lequel nous aurions travaillé dans le but de diversifier le gameplay.
+Puis dans un futur un peu plus lointain, nous aurions souhaité développer d'autres modes de jeu 
 
 ---
 # Partie "Développeur" (plus technique) :
@@ -48,23 +58,26 @@ L'objectif initial de notre projet était de réaliser une nouvelle version du j
 
 ### Faiblesses du code
 
-[C'est ici que vous me dites ce que vous savez que vous avez mal fait, expliquez pourquoi vous avez fait ce choix (manque de temps, manque de compétence, trop pénible à faire, etc.)]
+Les bonbons et les fruits ont le même type, ils partagent donc les mêmes attributs (points et speed), ce qui entrainait des comportements non souhaités (voir Difficulté rencontrée n°1)
+Impossibilité d'ajouter un nouvel objet sans ajouter sa couleur 
 
 ### Difficultés rencontrées
 
-#### 1. [Génération dynamique des ... pour ...]
+#### 1. [Gestion des attributs des bonbons et des fruits]
 
-[Expliquez ici la difficulté rencontrée et comment vous l'avez contournée]
+Après que le serpent ait collecté un bonbon, sa vitesse changeait en fonction du bonbon collecté (comme prévu), mais la collecte d'un fruit réinitialisait cette vitesse car les objets de type iItem auquel appartiennent les fruits et les bonbons ont un attribut vitesse qui est initialisé à 1.
+Le vitesse du serpent était donc égale à la vitesse du jeu de base / 1.
 
-#### 2. [Gestion des collisions]
+#### 2. [L'implémentation des design patterns]
 
-[Exemple : Nous n'avons pas réussi à gérer les collisions, PARCE QUE, mes objets n'héritaient pas d'une classe commune, car nos objets héirtaient de ... et nos personnages de ...]
+Nous avons mis du temps à comprendre le fonctionnement des design pattern, mais l'implémentation de ces derniers dans le contexte du jeu Snake n'a pas été simple, mais après beaucoup de communication et d'entraide, nous avons surmonté cette difficulté
 
 
 ### *Design Patterns* mis en oeuvre
 
-#### 1. [Factory]
-[Décrivez ici brièvement le design pattern utilisé et pourquoi]
+#### 1. [Décorateurs]
+Nous avons utilisés des décorateurs afin d'appliquer différentes quantités de points aux fruits et différentes vitesses aux différents bonbons dépendamment de leur couleur
+
 [Ajouter éventuellement des exemples de code pour montrer l'élégence de votre solution, pour cela vous pouvez écrire en Markdown votre code ainsi :
 
 <pre>
