@@ -3,6 +3,7 @@ package tp.Services;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Random;
@@ -22,10 +23,22 @@ import tp.View.Grid;
 @Component
 public class ObjetService {
     private ArrayList<iItem> listItems;
-    Snake instance;
+    private Snake instance;
+    private int grid_width;
+    private int grid_height;
+
+    public int getGrid_height() {
+        return grid_height;
+    }
+
+    public int getGrid_width() {
+        return grid_width;
+    } 
 
     public ObjetService(SnakeSingleton snakeSingleton) {
         this.instance = snakeSingleton.getInstance();
+        this.grid_width = 2;
+        this.grid_height = 3;
         setListItems(new ArrayList<>());
         generateItemsList(0, 0);
 
@@ -97,15 +110,38 @@ public class ObjetService {
                 sn.IncreaseSize();
             }
         }
+    }
 
+    private List<Entry<Integer, Integer>> wholeGrid() {
+        List<Entry<Integer, Integer>> res = new  ArrayList<>();
+        // res.add(new AbstractMap.SimpleEntry<>(null, null));
+        for (int i = 0; i < this.grid_width; i++) {
+            for (int j = 0; j < this.grid_height; j++) {
+                res.add(new AbstractMap.SimpleEntry<>(i,j));
+            }
+        }
+        return res;
     }
 
     public Entry<Integer, Integer> randomPositionGenerator() {
         Random random = new Random();
+        List<Entry<Integer, Integer>> snake_pos =  this.instance.getCurrentPosition();
 
-        int random1 = random.nextInt(20);
-        int random2 = random.nextInt(20);
-        return new AbstractMap.SimpleEntry<>(random1, random2);
+        List<Entry<Integer, Integer>> grid = wholeGrid();
+        for (Entry<Integer,Integer> i : snake_pos) {
+            grid.remove(i);
+        }
+
+        // Integer random1 = random.nextInt(grid_width);  
+        // Integer random2 = random.nextInt(grid_height);
+
+        Entry<Integer,Integer> ran_pos = new AbstractMap.SimpleEntry<>(grid.get(random.nextInt(grid.size())));
+
+        // while (snake_pos.contains(ran_pos)) {
+        //     random1 = random.nextInt(grid_width);
+        //     random2 = random.nextInt(grid_height);
+        // }
+        return ran_pos;
     }
 
     public void generateItemsList(int randomItemType, int randomItemColor) {
