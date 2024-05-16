@@ -99,20 +99,24 @@ public class Snake extends Observable {
     }
 
     public boolean tailTouched() {
-        List<Entry<Integer,Integer>> positions/* , previous_positions */;
+        // List<Entry<Integer,Integer>> positions/* , previous_positions */;
 
-        positions = last_positions.reversed().subList(0, size);
+        // positions = last_positions.reversed().subList(0, size);
         // previous_positions = last_positions.reversed().subList(size, last_positions.size());
         // System.out.println(positions);
         // System.out.println(previous_positions);
         
 
-        for (Entry<Integer,Integer> i : positions) {
-            if (Collections.frequency(positions, i) > 1) {
+        for (Entry<Integer,Integer> i : getCurrentPosition()) {
+            if (Collections.frequency(getCurrentPosition(), i) > 1) {
                 return true;
             }
         }
         return false;
+    }
+
+    public List<Entry<Integer,Integer>> getCurrentPosition() {
+        return last_positions.reversed().subList(0, size);
     }
 
     public Entry<Integer,Integer> getPos() {

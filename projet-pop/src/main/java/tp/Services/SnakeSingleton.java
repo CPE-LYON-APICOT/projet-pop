@@ -9,7 +9,7 @@ public class SnakeSingleton {
     private static Snake instance;
 
     public SnakeSingleton(){
-        SnakeSingleton.instance = new Snake(10,10);
+        SnakeSingleton.instance = new Snake(0,0);
     }
     public Snake getInstance(){
         return instance;

@@ -2,11 +2,13 @@ package tp.Services;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Observable;
 import java.util.Random;
 
-import javax.swing.RowFilter.Entry;
+// import javax.swing.RowFilter.Entry;
 
 import org.springframework.stereotype.Component;
 
@@ -19,11 +21,12 @@ import tp.View.Grid;
 @Component
 public class ObjetService {
     private ArrayList<Item> listItems;
+    private Snake instance;
 
         
 
     public ObjetService(SnakeSingleton snakeSingleton) {
-        Snake instance = snakeSingleton.getInstance();
+        this.instance = snakeSingleton.getInstance();
         setListItems(new ArrayList<>());
         generateItemsList();
         
@@ -69,11 +72,23 @@ public class ObjetService {
         }
     }
 
-    public Map.Entry<Integer, Integer> randomPositionGenerator() {
-        Random random = new Random();
+    private List<Entry<Integer, Integer>> wholeGrid () {
+        for 
+    }
 
-        int random1 = random.nextInt(20);
-        int random2 = random.nextInt(20);
+    public Entry<Integer, Integer> randomPositionGenerator() {
+        Random random = new Random();
+        List<Entry<Integer, Integer>> snake_pos =  this.instance.getCurrentPosition();
+        
+        Integer random1 = random.nextInt(grid_width);  
+        Integer random2 = random.nextInt(grid_height);
+
+        Entry<Integer,Integer> ran_pos = new AbstractMap.SimpleEntry(random1,random2);
+
+        // while (snake_pos.contains(ran_pos)) {
+        //     random1 = random.nextInt(grid_width);
+        //     random2 = random.nextInt(grid_height);
+        // }
         return new AbstractMap.SimpleEntry<>(random1, random2);
     }
 

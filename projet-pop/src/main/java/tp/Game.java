@@ -47,12 +47,14 @@ public class Game {
             // grid.getSnake().IncreaseSize();
             snakeController.moveSnake();
             grid.updateSnakePos();
+            // System.out.println(grid.getSnake().getCurrentPosition());
+            System.out.println(grid.getSnake().getX());
             grid.getSnake().updateDirections(grid.getSnake().getDirection());
             // System.out.println(grid.getSnake().getLastDirections());
             grid.generateItem(grid.getObjetService().getListItems());
             // grid.displayGrid();
             l.setText("<html>" + grid.getGrid() + "</html>");
-            TimeUnit.MILLISECONDS.sleep(500);
+            TimeUnit.MILLISECONDS.sleep(1000);
         }
         System.out.println("fin partie");
     }

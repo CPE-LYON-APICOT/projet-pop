@@ -31,8 +31,8 @@ public class Grid {
     public Grid(SnakeSingleton snakeSingleton, ObjetService objetService) {
         this.objetService = objetService;
         this.snake = snakeSingleton.getInstance();
-        this.height = 20;
-        this.width = 20;
+        this.height = 5;
+        this.width = 5;
         this.grid = new Integer[this.height][this.width];
         initGrid();
         generateItem(objetService.getListItems());
