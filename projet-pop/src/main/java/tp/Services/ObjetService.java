@@ -50,10 +50,6 @@ public class ObjetService {
                 "tp.Decorators.orangeCandyDecorator", "tp.Decorators.redCandyDecorator");
         this.listFruitTypes = Arrays.asList("tp.Model.basicFruit", "tp.Decorators.greenFruitDecorator",
                 "tp.Decorators.orangeFruitDecorator", "tp.Decorators.redFruitDecorator");
-        /*
-         * 
-         * instance.AddObserver()
-         */
     }
 
     public ArrayList<iItem> getListItems() {

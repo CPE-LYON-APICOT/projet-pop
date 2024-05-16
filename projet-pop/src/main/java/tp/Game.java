@@ -1,5 +1,6 @@
 package tp;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
@@ -33,10 +34,11 @@ public class Game {
         JPanel p = new JPanel();
         JLabel score = new JLabel("score : ");
 
-        l.setFont(new Font("Monospaced", Font.PLAIN, 20));
+        l.setFont(new Font("Monospaced", Font.BOLD, 40));
 
         score = new JLabel("score : "+grid.getSnake().getPoints());
-        score.setFont(new Font("Monospaced", Font.PLAIN, 10));
+        score.setFont(new Font("Monospaced", Font.PLAIN, 40));
+        Dimension size = score.getPreferredSize();
         
         p.add(l);
         p.add(score);
@@ -44,7 +46,8 @@ public class Game {
         
         f.setSize(1000, 700);
         f.setVisible(true);
-
+        
+        score.setBounds(0,0, size.width, size.height);
         f.addKeyListener(snakeController);
         
         // System.out.println("hauteur : " + grid.getHeight() + "largeur : " + grid.getWidth());
