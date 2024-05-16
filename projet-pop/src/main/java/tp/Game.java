@@ -45,8 +45,11 @@ public class Game {
         // System.out.println("hauteur : " + grid.getHeight() + "largeur : " + grid.getWidth());
         Integer defaultGameSpeed = 1500;
 
-        while (!(snakeSingleton.getInstance().tailTouched() || grid.snakeOutOfBounds())) {
+        while (!(snakeSingleton.getInstance().tailTouched() || grid.snakeOutOfBounds() /*|| grid.getSnake().getSize() == grid.getHeight() * grid.getWidth()*/)) {
             // grid.getSnake().IncreaseSize();
+            if (grid.getSnake().getSize() == grid.getHeight() * grid.getWidth()) {
+                break;
+            }
             snakeController.moveSnake();
             grid.updateSnakePos();
             // System.out.println(grid.getSnake().getCurrentPosition());
@@ -59,6 +62,7 @@ public class Game {
             Integer newSpeed = (int) Math.floor(defaultGameSpeed/grid.getSnake().getSpeed());
             
             //System.out.println(grid.getObjetService().getListItems());
+            
             TimeUnit.MILLISECONDS.sleep(newSpeed);
         }
         System.out.println("fin partie");
