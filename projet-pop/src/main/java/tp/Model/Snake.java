@@ -15,19 +15,20 @@ import java.util.Observable;
 public class Snake extends Observable {
     private Integer size;
     private Direction direction;
-    private List<Entry<Integer,Integer>> last_positions;
+    private List<Entry<Integer, Integer>> last_positions;
     private List<Direction> last_directions;
+    private double speed;
 
-    
-
+   
     public Snake(Integer x, Integer y) {
         this.size = 1;
         this.direction = Direction.RIGHT;
         this.last_positions = new ArrayList<>();
         this.last_directions = new ArrayList<>();
-        Entry<Integer,Integer> startPos = new AbstractMap.SimpleEntry<>(x,y);
+        Entry<Integer, Integer> startPos = new AbstractMap.SimpleEntry<>(x, y);
         last_positions.add(startPos);
         last_directions.add(this.direction);
+        this.speed = 1;
         // for (int i = 0; i < this.size; i++) {
         // }
     }
@@ -52,7 +53,7 @@ public class Snake extends Observable {
         this.last_directions.add(direction);
     }
 
-    public List<Entry<Integer,Integer>> getLastPositions() {
+    public List<Entry<Integer, Integer>> getLastPositions() {
         return last_positions;
     }
 
@@ -62,6 +63,15 @@ public class Snake extends Observable {
 
     public List<Direction> getLastDirections() {
         return last_directions;
+    }
+
+    public void setSpeed(double speed)
+    {
+        this.speed = speed;
+    }
+
+    public double getSpeed(){
+        return this.speed;
     }
 
     public boolean oppositeDirection(Direction direction) {
