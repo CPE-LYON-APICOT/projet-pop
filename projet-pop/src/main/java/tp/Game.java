@@ -1,6 +1,9 @@
 package tp;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
@@ -25,27 +28,45 @@ public class Game {
     }
 
     public void launch() throws InterruptedException {
-       
-    
-
-        JFrame f = new JFrame("label");
-        JLabel l = new JLabel();
-        JPanel p = new JPanel();
-        JLabel score = new JLabel("score : ");
-
-        l.setFont(new Font("Monospaced", Font.PLAIN, 20));
-
-        score = new JLabel("score : "+grid.getSnake().getPoints());
-        score.setFont(new Font("Monospaced", Font.PLAIN, 10));
+        JFrame f = new JFrame("Snake");
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setSize(1300, 800);
+        f.setLayout(null);
+        f.setVisible(true);
         
+        f.addKeyListener(snakeController);
+        JLabel l = new JLabel();
+        l.setFont(new Font("Monospaced", Font.BOLD, 40));
+        JLabel score = new JLabel("score : ");
+        score = new JLabel("score : "+grid.getSnake().getPoints());
+        score.setFont(new Font("Monospaced", Font.PLAIN, 40));
+        
+        JPanel p = new JPanel(null);
+        p.setBounds(0, 0, f.getWidth(), f.getHeight());
+        l.setBounds(50, 0, 500, 600);   
+        score.setBounds(f.getWidth() - 700, 20, 3000, 40);
+
         p.add(l);
         p.add(score);
-        f.add(p);
-        
-        f.setSize(1000, 700);
-        f.setVisible(true);
 
-        f.addKeyListener(snakeController);
+        f.add(p);
+
+        // f.addComponentListener(new ComponentAdapter() {
+        //     public void componentResized(ComponentEvent evt) {
+        //         // Adjust the score label position dynamically
+        //         score.setBounds(f.getWidth() - 300, 20, 250, 40);  // Adjust position and size dynamically
+        //         p.setBounds(0, 0, f.getWidth(), f.getHeight());  // Adjust panel bounds
+        //     }
+        // });
+
+        // Revalidate and repaint to ensure proper layout
+        f.revalidate();
+        f.repaint();
+
+        // Dimension size = score.getPreferredSize();
+        // score.setBounds(0,0, size.width, size.height);
+        // score.setBounds(f.getWidth()/10, f.getHeight()/10, 100, 30);
+
         
         // System.out.println("hauteur : " + grid.getHeight() + "largeur : " + grid.getWidth());
         Integer defaultGameSpeed = 500;

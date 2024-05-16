@@ -8,7 +8,7 @@
             "type": "java",
             "name": "App",
             "request": "launch",
-            "mainClass": "tp.ATRIER.App",
+            "mainClass": "tp.Main",
             "projectName": "projet-pop"
         },
         {

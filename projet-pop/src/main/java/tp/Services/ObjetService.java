@@ -50,10 +50,6 @@ public class ObjetService {
                 "tp.Decorators.orangeCandyDecorator", "tp.Decorators.redCandyDecorator");
         this.listFruitTypes = Arrays.asList("tp.Model.basicFruit", "tp.Decorators.greenFruitDecorator",
                 "tp.Decorators.orangeFruitDecorator", "tp.Decorators.redFruitDecorator");
-        /*
-         * 
-         * instance.AddObserver()
-         */
     }
 
     public ArrayList<iItem> getListItems() {
@@ -140,9 +136,18 @@ public class ObjetService {
     public Entry<Integer, Integer> randomPositionGenerator() {
         Random random = new Random();
         List<Entry<Integer, Integer>> snake_pos = this.instance.getCurrentPosition();
+        List<Entry<Integer, Integer>> item_pos = new ArrayList<>();
+
+        for (iItem i : listItems) {
+            item_pos.add(i.getPosition());
+        }
 
         List<Entry<Integer, Integer>> grid = wholeGrid();
         for (Entry<Integer, Integer> i : snake_pos) {
+            grid.remove(i);
+        }
+
+        for (Entry<Integer, Integer> i : item_pos) {
             grid.remove(i);
         }
 

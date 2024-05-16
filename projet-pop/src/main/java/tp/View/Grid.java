@@ -1,5 +1,7 @@
 package tp.View;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -60,9 +62,10 @@ public class Grid {
 
     public String getGrid() {
         String res = "";
+        List<String> colors = Arrays.asList("#732d00", "green", "#535353", "#535353", "#15e700", "#15e700", "#ff953c", "#ff953c", "#ff0b0b", "#ff0b0b");
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                res += grid[i][j] + " ";
+                res += "<font color='" + colors.get(grid[i][j]) + "'>" + grid[i][j] + "</font> ";
             }
             res += "<br>";
         }
@@ -106,57 +109,47 @@ public class Grid {
     }
 
     public void generateItem(List<iItem> itemList) {
+        for (iItem item : itemList) {
+            int number;
+            switch (item.getClass().getName()) {
+                case "tp.Model.basicFruit":
+                    number = 2;
+                    break;
+    
+                case "tp.Model.basicCandy":
+                    number = 3;
+                    break;
+    
+                case "tp.Decorators.greenFruitDecorator":
+                    number = 4;
+                    break;
+    
+                case "tp.Decorators.greenCandyDecorator":
+                    number = 5;
+                    break;
+    
+                case "tp.Decorators.orangeFruitDecorator":
+                    number = 6;
+                    break;
+    
+                case "tp.Decorators.orangeCandyDecorator":
+                    number = 7;
+                    break;
 
-        switch (itemList.get(0).getClass().getName()) {
+                case "tp.Decorators.redFruitDecorator":
+                    number = 8;
+                    break;
 
-            case "tp.Model.basicFruit":
-                for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 1;
+                case "tp.Decorators.redCandyDecorator":
+                    number = 9;
+                    break;
+                default:
+                    number = 99;
+    
                 }
-                break;
-
-            case "tp.Model.basicCandy":
-                for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 2;
-                }
-                break;
-
-            case "tp.Decorators.greenFruitDecorator":
-                for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 3;
-                }
-                break;
-
-            case "tp.Decorators.greenCandyDecorator":
-                for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 4;
-                }
-                break;
-
-            case "tp.Decorators.orangeFruitDecorator":
-                for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 5;
-                }
-                break;
-
-            case "tp.Decorators.orangeCandyDecorator":
-                for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 6;
-                }
-                break;
-
-            case "tp.Decorators.redFruitDecorator":
-                for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 7;
-                }
-                break;
-            case "tp.Decorators.redCandyDecorator":
-                for (iItem item : itemList) {
-                    this.grid[item.getY()][item.getX()] = 8;
-                }
-                break;
-
+            this.grid[item.getY()][item.getX()] = number;
         }
+        
 
     }
 }
