@@ -85,7 +85,7 @@ Nous avons utilisés des décorateurs afin d'appliquer différentes quantités d
 
 Nos décorateurs utilisent une interface iItem qui est implémentée par la classe abstraite Item, elle contient les fonctions qui permettent de récupérer les coordonnées d'un objet, les points et la vitesse qu'il octroie. Pour les fruits et les bonbons, on crée respectivement un objet basique (basicCandy et basicFruit) sur lesquels nous appliquons nos décorateurs. Actuellement, nous avons trois décorateurs pour les fruits et trois pour les couleurs (chaque couleur correspond à un nombre de points différent pour les fruits et à une vitesse différente pour les bonbons)
 
-<pre>
+
 
 ```java
 
@@ -180,18 +180,64 @@ public class greenFruitDecorator extends fruitDecorator{
 }
 
 ```
-</pre>
 
 #### 2. [Observer]
+Nous avons utilisé le design pattern observer/observable afin que lorsque le serpent entre en contact (mange) un Item, une action soit effectuée en fonction de l'Item mangé
 
-
-<pre>
+*Ajout de l'observer au serpent :* 
 ```java
-
+public ObjetService(SnakeSingleton snakeSingleton) {
+        this.instance = snakeSingleton.getInstance();
+        instance.addObserver((e, f) -> DetectIfSnakeAteItem(e, f));
 ```
-</pre>
 
-]
+*Fonction qui compare la position du serpent à l'objet observable puis vérifie son type pour déterminer quelle action effectuer*
+
+```java
+private void DetectIfSnakeAteItem(Observable e, Object f) {
+        if (f instanceof Snake) {
+            var sn = ((Snake) f);
+            var potentialItem = getListItems().stream()
+                    .filter(o -> o.getX().equals(sn.getX()) && o.getY().equals(sn.getY())).findAny();
+            if (potentialItem.isPresent()) {
+                iItem item = potentialItem.get();
+                getListItems().remove(potentialItem.get());
+
+                // génération de deux valeurs aléatoires afin de définir le type d'objet qui
+                // sera ajouté dans la grille
+
+                Random random = new Random();
+                
+                int randomItemType;
+                
+                if(listCandyTypes.contains(item.getClass().getName()))
+                {
+                    randomItemType=0;
+                }
+                else {
+                    randomItemType=1;
+                }
+
+                int randomItemColor = random.nextInt(4);
+
+                generateItemsList(randomItemType, randomItemColor);
+
+                System.out.println("L'objet " + item.getClass().getName() + " a été ramassé");
+                System.out.println(getListItems());
+                
+                iItem iItem = (iItem) potentialItem.get();
+                
+                this.instance.setPoints(iItem.getPoints() * this.instance.getSpeed());
+                if (iItem.getSpeed() != 0) {
+                    this.instance.setSpeed(iItem.getSpeed());
+                }
+
+                sn.IncreaseSize();
+            }
+        }
+    }
+```
+
 
 ---
 
@@ -199,7 +245,6 @@ public class greenFruitDecorator extends fruitDecorator{
 
 Nous avons utilisés des le design pattern singleton afin de s'assurer qu'il n'y a qu'une seule instance de la classe Snake en fournissant un point d'accès global à cette instance.
 
-<pre>
 ```java
 
 import tp.Model.Snake;
@@ -217,7 +262,6 @@ public class SnakeSingleton {
 }
 
 ```
-</pre>
 
 ---
 
